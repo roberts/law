@@ -15,7 +15,19 @@ class CreateFirmsTable extends Migration
     {
         Schema::create('firms', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('admin');
+            $table->string('name');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zip');
+            $table->string('telephone');
+            $table->string('fax');
+            $table->string('website');
+            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('updated_by');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
