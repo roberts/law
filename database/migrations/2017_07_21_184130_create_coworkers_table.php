@@ -13,7 +13,14 @@ class CreateCoworkersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('coworkers', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('updated_by');
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateCoworkersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('coworkers');
     }
 }

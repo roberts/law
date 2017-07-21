@@ -13,7 +13,14 @@ class CreateInjuriesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('injuries', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('updated_by');
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateInjuriesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('injuries');
     }
 }

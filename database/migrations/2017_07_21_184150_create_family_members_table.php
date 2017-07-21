@@ -13,7 +13,14 @@ class CreateFamilyMembersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('family_members', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->unsignedInteger('created_by');
+            $table->unsignedInteger('updated_by');
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateFamilyMembersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('family_members');
     }
 }
