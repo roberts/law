@@ -58,7 +58,6 @@
                     </div>
                 </nav>
             </div>
-        </div>
 
             <!-- Hero footer: for fileroom -->
             <div class="hero-foot{{ set_shown('fileroom') }}">
@@ -75,6 +74,8 @@
                     </div>
                 </nav>
             </div>
+
+            
         </div>
         <nav class="navbar has-shadow{{ set_shown('fileroom') }}">
             <div class="navbar-brand container">
