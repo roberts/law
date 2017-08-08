@@ -31,10 +31,10 @@
                   <span></span>
                 </span>
                 <div class="nav-right nav-menu" :class="{ 'is-active': showNav }">
-                  <a href="/desk" class="nav-item{{ set_active('desk') }}">Desk</a>
-                  <a href="/fileroom" class="nav-item{{ set_active('fileroom') }}">File Room</a>
-                  <a href="/conference" class="nav-item{{ set_active('conference') }}">Conference Room</a>
-                  <a href="/accounting" class="nav-item{{ set_active('accounting') }}">Accounting</a>
+                  <a href="/desk" class="nav-item{{ set_active('desk*') }}">Desk</a>
+                  <a href="/fileroom" class="nav-item{{ set_active('fileroom*') }}">File Room</a>
+                  <a href="/conference" class="nav-item{{ set_active('conference*') }}">Conference Room</a>
+                  <a href="/accounting" class="nav-item{{ set_active('accounting*') }}">Accounting</a>
                   <span class="nav-item">
                     <a href="/login" class="button is-primary is-inverted">
                       <span class="icon"><i class="fa fa-sign-in"></i></span>
@@ -60,16 +60,16 @@
             </div>
 
             <!-- Hero footer: for fileroom -->
-            <div class="hero-foot{{ set_shown('fileroom') }}">
+            <div class="hero-foot{{ set_shown('fileroom*') }}">
                 <nav class="tabs is-boxed is-fullwidth">
                     <div class="container">
                         <ul>
-                            <li class="is-active"><a>All Files</a></li>
-                            <li><a>Leads</a></li>
-                            <li><a>Pre-Litigation</a></li>
-                            <li><a>Litigation</a></li>
-                            <li><a>Closed</a></li>
-                            <li><a>New File</a></li>
+                            <li class="{{ set_active('fileroom') }}"><a href="/fileroom">All Files</a></li>
+                            <li class="{{ set_active('fileroom/leads') }}"><a href="/fileroom/leads">Leads</a></li>
+                            <li class="{{ set_active('fileroom/pre') }}"><a href="/fileroom/pre">Pre-Litigation</a></li>
+                            <li class="{{ set_active('fileroom/litigation') }}"><a href="/fileroom/litigation">Litigation</a></li>
+                            <li class="{{ set_active('fileroom/closed') }}"><a href="/fileroom/closed">Closed</a></li>
+                            <li class="{{ set_active('fileroom/create') }}"><a href="/fileroom/create">New File</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -77,7 +77,7 @@
 
             
         </div>
-        <nav class="navbar has-shadow{{ set_shown('fileroom') }}">
+        <nav class="navbar has-shadow{{ set_shown('fileroom*') }}">
             <div class="navbar-brand container">
                 <a class="navbar-item is-tab " href="/">Matter</a>
                 <a class="navbar-item is-tab " href="/">Client</a>
