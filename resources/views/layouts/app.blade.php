@@ -47,22 +47,21 @@
           </div>
 
           <!-- Hero footer: will stick at the bottom -->
-          <div class="hero-foot{{ set_hidden('/') }}">
+          <div class="hero-foot{{ set_shown('fileroom') }}">
             <nav class="tabs is-boxed is-fullwidth">
               <div class="container">
                 <ul>
-                  <li class="is-active"><a>Overview</a></li>
-                  <li><a>Modifiers</a></li>
-                  <li><a>Grid</a></li>
-                  <li><a>Elements</a></li>
-                  <li><a>Components</a></li>
-                  <li><a>Layout</a></li>
+                  <li class="is-active"><a>All Files</a></li>
+                  <li><a>Leads</a></li>
+                  <li><a>Pre-Litigation</a></li>
+                  <li><a>Litigation</a></li>
+                  <li><a>Closed</a></li>
+                  <li><a>New File</a></li>
                 </ul>
               </div>
             </nav>
           </div>
       </div>
-        
         <nav class="navbar has-shadow{{ set_shown('fileroom') }}">
             <div class="navbar-brand container">
                 <a class="navbar-item is-tab " href="http://bulma.io/documentation/components/breadcrumb/">Breadcrumb</a>

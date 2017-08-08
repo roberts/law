@@ -15,6 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('desk', function () {
+    return view('desk');
+});
+
+Route::get('conference', function () {
+    return view('conference');
+});
+
+Route::get('accounting', function () {
+    return view('accounting');
+});
+
+Route::get('fileroom', function () {
+    return view('fileroom');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
