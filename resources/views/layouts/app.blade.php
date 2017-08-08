@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-    <section id="law-nav" class="is-sticky">
+    <section id="law-nav" class="is-sticky{{ set_hidden('login') }}">
         <div class="hero is-primary">
           <div class="hero-head">
             <header class="nav">
@@ -47,7 +47,7 @@
           </div>
 
           <!-- Hero footer: will stick at the bottom -->
-          <div class="hero-foot {{ set_hidden('/') }}">
+          <div class="hero-foot{{ set_hidden('/') }}">
             <nav class="tabs is-boxed is-fullwidth">
               <div class="container">
                 <ul>
@@ -69,13 +69,10 @@
             </div>
         </nav>
     </section>
-    <section class="section">
-        <div style="height:150px;"></div>
-        <div class="container">
-            @yield('content')
-        </div>
-    </section>
-    <footer class="footer">
+
+    @yield('content')
+
+    <footer class="footer{{ set_hidden('login') }}">
       <div class="container">
         <div class="content has-text-centered">
           <p>
