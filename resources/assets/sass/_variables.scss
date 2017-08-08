@@ -3,7 +3,12 @@
 $green: #5EAB00;
 // Update blue
 $blue: #005DAA;
+// Update white
+$white: #FFFFFF;
 
 // Define the derived variables
 // Use the new green as the primary color
 $primary: $green;
+
+.is-sticky { position: fixed !important; top: 0; left: 0; right: 0; z-index: 12; }
+.is-hidden { display: none; }

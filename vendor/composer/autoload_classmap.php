@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Action' => $baseDir . '/app/Action.php',
+    'App\\ActionType' => $baseDir . '/app/ActionType.php',
     'App\\Client' => $baseDir . '/app/Client.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Coworker' => $baseDir . '/app/Coworker.php',
@@ -13,6 +15,8 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\FamilyMember' => $baseDir . '/app/FamilyMember.php',
     'App\\Firm' => $baseDir . '/app/Firm.php',
+    'App\\Http\\Controllers\\ActionTypesController' => $baseDir . '/app/Http/Controllers/ActionTypesController.php',
+    'App\\Http\\Controllers\\ActionsController' => $baseDir . '/app/Http/Controllers/ActionsController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',

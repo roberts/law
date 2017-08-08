@@ -15,81 +15,87 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-    <section class="hero is-primary">
-      <!-- Hero header: will stick at the top -->
-      <div class="hero-head">
-        <header class="nav">
-          <div class="container">
-            <div class="nav-left">
-              <a class="nav-item">
-                <img src="/img/rloky.png" alt="Logo">
-              </a>
-            </div>
-            <span class="nav-toggle">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-            <div class="nav-right nav-menu">
-              <a class="nav-item is-active">Desk</a>
-              <a class="nav-item">File Room</a>
-              <a class="nav-item">Conference Room</a>
-              <a class="nav-item">Accounting</a>
-              <span class="nav-item">
-                <a class="button is-primary is-inverted">
-                  <span class="icon"><i class="fa fa-sign-in"></i></span>
-                  <span>Login</span>
-                </a>
-              </span>
-            </div>
+    <section id="law-nav" class="is-sticky">
+        <div class="hero is-primary">
+          <div class="hero-head">
+            <header class="nav">
+              <div class="container">
+                <div class="nav-left">
+                  <a href="/" class="nav-item">
+                    <img src="/img/rloky.png" alt="Logo">
+                  </a>
+                </div>
+                <span class="nav-toggle" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+                <div class="nav-right nav-menu" :class="{ 'is-active': showNav }">
+                  <a href="/desk" class="nav-item{{ set_active('desk') }}">Desk</a>
+                  <a href="/fileroom" class="nav-item{{ set_active('fileroom') }}">File Room</a>
+                  <a href="/conference" class="nav-item{{ set_active('conference') }}">Conference Room</a>
+                  <a href="/accounting" class="nav-item{{ set_active('accounting') }}">Accounting</a>
+                  <span class="nav-item">
+                    <a href="/login" class="button is-primary is-inverted">
+                      <span class="icon"><i class="fa fa-sign-in"></i></span>
+                      <span>Login</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </header>
           </div>
-        </header>
-      </div>
 
-      <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title">
-            Title
-          </h1>
-          <h2 class="subtitle">
-            Subtitle
-          </h2>
-        </div>
-      </div>
-
-      <!-- Hero footer: will stick at the bottom -->
-      <div class="hero-foot">
-        <nav class="tabs is-boxed is-fullwidth">
-          <div class="container">
-            <ul>
-              <li class="is-active"><a>Overview</a></li>
-              <li><a>Modifiers</a></li>
-              <li><a>Grid</a></li>
-              <li><a>Elements</a></li>
-              <li><a>Components</a></li>
-              <li><a>Layout</a></li>
-            </ul>
+          <!-- Hero footer: will stick at the bottom -->
+          <div class="hero-foot {{ set_hidden('/') }}">
+            <nav class="tabs is-boxed is-fullwidth">
+              <div class="container">
+                <ul>
+                  <li class="is-active"><a>Overview</a></li>
+                  <li><a>Modifiers</a></li>
+                  <li><a>Grid</a></li>
+                  <li><a>Elements</a></li>
+                  <li><a>Components</a></li>
+                  <li><a>Layout</a></li>
+                </ul>
+              </div>
+            </nav>
           </div>
+      </div>
+        
+        <nav class="navbar has-shadow{{ set_shown('fileroom') }}">
+            <div class="navbar-brand container">
+                <a class="navbar-item is-tab " href="http://bulma.io/documentation/components/breadcrumb/">Breadcrumb</a>
+            </div>
         </nav>
-      </div>
     </section>
-
-        @yield('content')
-
+    <section class="section">
+        <div style="height:150px;"></div>
+        <div class="container">
+            @yield('content')
+        </div>
+    </section>
     <footer class="footer">
       <div class="container">
         <div class="content has-text-centered">
           <p>
-            <strong>RLO Staff Portal</strong> by <a href="https://drewroberts.com">Drew Roberts</a>.
+            <strong>RLO Staff Portal</strong> by <a href="https://DrewRoberts.com">Drew Roberts</a>.
           </p>
           <p>
-            <a class="icon" href="https://github.com/DrewRoberts"><i class="fa fa-github"></i></a>
+            <a class="icon" href="https://rloky.com"><img src="/img/RLOicon.png" width="40px" height="40px"></a>
           </p>
         </div>
       </div>
     </footer>
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
+    <script type="text/javascript">
+        new Vue({
+          el: '#law-nav',
+          data: {
+            showNav: false
+          }
+        });
+    </script>
 </body>
 </html>
