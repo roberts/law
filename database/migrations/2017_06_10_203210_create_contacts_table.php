@@ -15,8 +15,8 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('display_name')->unique(); // Typically is first and last name or the name of the corporation
             $table->string('type_id'); // Male of Female (sex) if person, and coporation type if corporation
-            $table->string('display_name'); // Typically is first and last name or the name of the corporation
             $table->unsignedInteger('user_id')->nullable()->unique(); // Used when person is user in system. If used, can only be one to one relationship
             $table->string('last_name')->nullable(); // Required for persons. Default greeting is prefix last_name or if prefix is NULL then Mr. or Ms. last_name depending on sex
             $table->string('first_name')->nullable();
@@ -34,7 +34,7 @@ class CreateContactsTable extends Migration
             $table->string('cell_phone', 25)->nullable();
             $table->string('fax', 25)->nullable();
             $table->string('email')->unique()->nullable(); // Used only for persons
-            $table->string('website')->nullable(); // Used only for corporations
+            $table->string('website')->nullable(); // Used only for organizations
             $table->string('title')->nullable(); // Used only for persons
             $table->date('birth_date')->nullable(); // Used only for persons
             $table->string('birth_city')->nullable(); // Used only for persons
@@ -42,9 +42,10 @@ class CreateContactsTable extends Migration
             $table->string('ssn', 60)->nullable(); // Used only for persons
             $table->string('dln', 60)->nullable(); // Used only for persons
             $table->string('dl_state')->nullable(); // Used only for persons
-            $table->string('ein', 60)->nullable(); // Used only for corporations
-            $table->string('dba')->nullable(); // Used only for corporations
-            $table->string('branch')->nullable(); // Used only for corporations
+            $table->string('ein', 60)->nullable(); // Used only for organizations
+            $table->string('corp_name')->nullable(); // Used only for organizations. Official corporation name like Tipoff, Inc.
+            $table->string('dba')->nullable(); // Used only for organizations
+            $table->string('branch')->nullable(); // Used only for organizations
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();

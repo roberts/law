@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMasksTable extends Migration
+class CreateIntakeMasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('masks', function (Blueprint $table) {
+        Schema::create('intake_masks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('mine_start_date');
             $table->string('mine_end_date');
@@ -62,6 +62,6 @@ class CreateMasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('masks');
+        Schema::dropIfExists('intake_masks');
     }
 }
