@@ -13,9 +13,11 @@ class CreateLitigationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('litigations', function (Blueprint $table) {
+        Schema::create('litigations', function (Blueprint $table) { // Can be composed of multiple matters (files)
             $table->increments('id');
-
+            $table->string('case_number');
+            $table->string('county');
+            $table->string('state');
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();

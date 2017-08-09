@@ -13,9 +13,9 @@ class CreateFirmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('firms', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('admin');
+            $table->unsignedInteger('admin')->nullable();
             $table->string('name');
             $table->string('address');
             $table->string('city');
@@ -38,6 +38,6 @@ class CreateFirmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('firms');
+        Schema::dropIfExists('organizations');
     }
 }
