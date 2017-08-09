@@ -60,16 +60,16 @@
             </div>
 
             <!-- Hero footer: for fileroom -->
-            <div class="hero-foot{{ set_shown('fileroom*') }}">
+            <div class="hero-foot{{ set_shown('files*') }}">
                 <nav class="tabs is-boxed is-fullwidth">
                     <div class="container">
                         <ul>
-                            <li class="{{ set_active('fileroom') }}"><a href="/fileroom">All Files</a></li>
-                            <li class="{{ set_active('fileroom/leads') }}"><a href="/fileroom/leads">Leads</a></li>
-                            <li class="{{ set_active('fileroom/pre') }}"><a href="/fileroom/pre">Pre-Litigation</a></li>
-                            <li class="{{ set_active('fileroom/litigation') }}"><a href="/fileroom/litigation">Litigation</a></li>
-                            <li class="{{ set_active('fileroom/closed') }}"><a href="/fileroom/closed">Closed</a></li>
-                            <li class="{{ set_active('fileroom/create') }}"><a href="/fileroom/create">New File</a></li>
+                            <li class="{{ set_active('files') }}"><a href="/files">All Files</a></li>
+                            <li class="{{ set_active('files/leads') }}"><a href="/files/leads">Leads</a></li>
+                            <li class="{{ set_active('files/pre') }}"><a href="/files/pre">Pre-Litigation</a></li>
+                            <li class="{{ set_active('files/litigation') }}"><a href="/files/litigation">Litigation</a></li>
+                            <li class="{{ set_active('files/closed') }}"><a href="/files/closed">Closed</a></li>
+                            <li class="{{ set_active('files/create') }}"><a href="/files/create">New File</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -77,7 +77,7 @@
 
             
         </div>
-        <nav class="navbar has-shadow{{ set_shown('fileroom*') }}">
+        <nav class="navbar has-shadow{{ set_shown('files*') }}">
             <div class="navbar-brand container">
                 <a class="navbar-item is-tab " href="/">Matter</a>
                 <a class="navbar-item is-tab " href="/">Client</a>
