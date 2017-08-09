@@ -16,11 +16,12 @@ class CreateFilesTable extends Migration
         Schema::create('files', function (Blueprint $table) { // Also called Matters
             $table->increments('id');
             $table->string('file_number'); // YYYY-MM-XXXXX where YYYY-MM is year and month of creation and then auto-increase by 1 for the last 5 digits.
-            $table->unsignedInteger('owner'); // Owner is a firm, so this is id on organization table. Can have multiple firms that have access to it as co-counsels
-            // Can have only one type: Dust Mask, Car Wreck, DUI, Estate Planning, etc.
-            // Can have multiple intake forms so need to create many to many polymorphic pivot on intake types
+            $table->unsignedInteger('firm'); // Firm that owns the matter, so it is organization id on contacts table. 
+            // Can have multiple firms that have access to it as co-counsels via relations table
+            // Can have only one type as defined by fileable pivot table: Dust Mask, Car Wreck, DUI, Estate Planning, etc.
+            // Can have multiple intake forms via fileables polymorphic pivot table
             // Can have more than one plaintiff through the intake forms
-            // Can have more than one defendant - manytomany
+            // Can have more than one defendant through relations table
             $table->unsignedInteger('status_id'); // Break into it's own table so that we can time stamp all of the changes
             $table->unsignedInteger('source_id');
             $table->unsignedInteger('litigation_id')->nullable(); // One litigation have have multiple matters(files)

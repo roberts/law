@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoworkersTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCoworkersTable extends Migration
      */
     public function up()
     {
-        Schema::create('coworkers', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
+            $table->string('slug')->unique()->index();
+            $table->string('title')->unique();
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +30,6 @@ class CreateCoworkersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coworkers');
+        Schema::dropIfExists('types');
     }
 }
