@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientsTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('persons', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type_id'); // Male of Female (sex) if person, and coporation type if corporation
+            $table->string('display_name'); // Typically is first and last name or the name of the corporation
             $table->unsignedInteger('user_id')->nullable()->unique(); // Used when person is user in system. If used, can only be one to one relationship
-            $table->string('display_name'); // Typically is first and last name
-            $table->string('email')->unique();
-            $table->string('sex');
-            $table->string('last_name'); // Default greeting is prefix last_name or if prefix is NULL then Mr. or Ms. last_name depending on sex, which is required
+            $table->string('last_name')->nullable(); // Required for persons. Default greeting is prefix last_name or if prefix is NULL then Mr. or Ms. last_name depending on sex
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('prefix', 6)->nullable(); // Could be Dr. or other prefix
@@ -30,17 +29,22 @@ class CreateClientsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zip');
-            $table->string('title')->nullable();
             $table->string('work_phone', 25)->nullable();
             $table->string('home_phone', 25)->nullable();
             $table->string('cell_phone', 25)->nullable();
             $table->string('fax', 25)->nullable();
-            $table->date('birth_date')->nullable();
-            $table->string('birth_city')->nullable();
-            $table->string('birth_state')->nullable();
-            $table->string('ssn', 60)->nullable();
-            $table->string('dln', 60)->nullable();
-            $table->string('dl_state')->nullable();
+            $table->string('email')->unique()->nullable(); // Used only for persons
+            $table->string('website')->nullable(); // Used only for corporations
+            $table->string('title')->nullable(); // Used only for persons
+            $table->date('birth_date')->nullable(); // Used only for persons
+            $table->string('birth_city')->nullable(); // Used only for persons
+            $table->string('birth_state')->nullable(); // Used only for persons
+            $table->string('ssn', 60)->nullable(); // Used only for persons
+            $table->string('dln', 60)->nullable(); // Used only for persons
+            $table->string('dl_state')->nullable(); // Used only for persons
+            $table->string('ein', 60)->nullable(); // Used only for corporations
+            $table->string('dba')->nullable(); // Used only for corporations
+            $table->string('branch')->nullable(); // Used only for corporations
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
@@ -55,6 +59,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persons');
+        Schema::dropIfExists('contacts');
     }
 }
