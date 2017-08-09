@@ -32,7 +32,7 @@
                 </span>
                 <div class="nav-right nav-menu" :class="{ 'is-active': showNav }">
                   <a href="/desk" class="nav-item{{ set_active('desk*') }}">Desk</a>
-                  <a href="/fileroom" class="nav-item{{ set_active('fileroom*') }}">File Room</a>
+                  <a href="/files" class="nav-item{{ set_active('files*') }}">File Room</a>
                   <a href="/conference" class="nav-item{{ set_active('conference*') }}">Conference Room</a>
                   <a href="/accounting" class="nav-item{{ set_active('accounting*') }}">Accounting</a>
                   <span class="nav-item">
