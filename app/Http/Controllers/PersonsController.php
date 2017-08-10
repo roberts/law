@@ -24,7 +24,33 @@ class PersonsController extends Controller
      */
     public function index()
     {
-        //
+        $persons = Person::orderBy('id')->get();
+
+        return view('persons.index', compact('persons'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function male()
+    {
+        $persons = Person::where('type_id', '=', 1)->orderBy('id')->get();
+
+        return view('persons.male', compact('persons'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function female()
+    {
+        $persons = Person::where('type_id', '=', 2)->orderBy('id')->get();
+
+        return view('persons.female', compact('persons'));
     }
 
     /**
@@ -56,7 +82,7 @@ class PersonsController extends Controller
      */
     public function show(Person $person)
     {
-        //
+        return view('persons.show', compact('person'));
     }
 
     /**

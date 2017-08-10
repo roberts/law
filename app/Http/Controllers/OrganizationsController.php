@@ -24,7 +24,9 @@ class OrganizationsController extends Controller
      */
     public function index()
     {
-        //
+        $organizations = Organization::orderBy('id')->get();
+
+        return view('organizations.index', compact('organizations'));
     }
 
     /**
@@ -56,7 +58,7 @@ class OrganizationsController extends Controller
      */
     public function show(Organization $organization)
     {
-        //
+        return view('organizations.show', compact('organization'));
     }
 
     /**
