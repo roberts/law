@@ -128,5 +128,9 @@
           }
         });
     </script>
+    @yield('javascript')
+    @if ($flash = session('message'))
+        @include('layouts.flashmessage')
+    @endif
 </body>
 </html>
