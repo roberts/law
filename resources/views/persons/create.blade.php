@@ -17,7 +17,7 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="display_name" name="display_name" type="text" placeholder="Name">
+			        <input class="input" id="display_name" name="display_name" value="{{ old('display_name') }}" type="text" placeholder="Name">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-user"></i>
 			        </span>
@@ -25,7 +25,7 @@
 			    </div>
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="email" name="email" type="email" placeholder="Email">
+			        <input class="input" id="email" name="email" value="{{ old('email') }}" type="email" placeholder="Email">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-envelope"></i>
 			        </span>
@@ -40,7 +40,7 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="display_name" name="display_name" type="tel" placeholder="Cell Phone">
+			        <input class="input" id="cell_phone" name="cell_phone" value="{{ old('cell_phone') }}" type="tel" placeholder="Cell Phone">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-phone"></i>
 			        </span>
@@ -48,7 +48,7 @@
 			    </div>
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="email" name="email" type="tel" placeholder="Work Phone">
+			        <input class="input" id="work_phone" name="work_phone" value="{{ old('work_phone') }}" type="tel" placeholder="Work Phone">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-phone"></i>
 			        </span>
@@ -63,7 +63,7 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="address" name="address" type="text" placeholder="Address">
+			        <input class="input" id="address" name="address" value="{{ old('address') }}" type="text" placeholder="Address">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-address-card-o"></i>
 			        </span>
@@ -78,7 +78,7 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="city" name="city" type="tel" placeholder="City">
+			        <input class="input" id="city" name="city" value="{{ old('city') }}" type="text" placeholder="City">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-map-marker"></i>
 			        </span>
@@ -87,7 +87,7 @@
 			    <div class="field is-narrow">
 			      <div class="control has-icons-left">
 			        <div class="select is-fullwidth">
-			          <select>
+			          <select id="state" name="state">
 						<option value="AL">Alabama</option>
 						<option value="AK">Alaska</option>
 						<option value="AZ">Arizona</option>
@@ -148,7 +148,7 @@
 			    </div>
 			    <div class="field is-narrow">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="zip" name="zip" type="text" placeholder="ZIP">
+			        <input class="input" id="zip" name="zip" value="{{ old('zip') }}" type="text" placeholder="ZIP">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-home"></i>
 			        </span>
@@ -164,11 +164,11 @@
 			    <div class="field is-narrow">
 			      <div class="control">
 			        <label class="radio">
-			          <input type="radio" name="member">
+			          <input type="radio" id="type_id" name="type_id" value="1" checked>
 			          Male
 			        </label>
 			        <label class="radio">
-			          <input type="radio" name="member">
+			          <input type="radio" id="type_id" name="type_id" value="2">
 			          Female
 			        </label>
 			      </div>
@@ -176,7 +176,7 @@
 			  </div>
 			</div>
 
-			
+
 			<div class="field is-horizontal">
 			  <div class="field-label">
 			    <!-- Left empty for spacing -->

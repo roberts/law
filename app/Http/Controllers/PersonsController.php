@@ -83,8 +83,11 @@ class PersonsController extends Controller
                 'type_id' => 'required|min:1|max:1'
             ]);
 
-        $this->create([
+        $remove = array(".", "_", "/", "(", ")");
+
+        $contact = Person::create([
                 'display_name' => $request->display_name,
+                'slug' => str_replace($remove, "", str_replace(" ", "-", strtolower($request->display_name))),
                 'email' => $request->email ?: null,
                 'cell_phone' => $request->cell_phone ?: null,
                 'work_phone' => $request->work_phone ?: null,
