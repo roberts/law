@@ -17,18 +17,24 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="display_name" name="display_name" value="{{ old('display_name') }}" type="text" placeholder="Name">
+			        <input class="input @if ($errors->has('display_name')) is-danger @endif" id="display_name" name="display_name" value="{{ old('display_name') }}" type="text" placeholder="Name">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-user"></i>
 			        </span>
+			        @if ($errors->has('display_name'))
+			        	<p class="help is-danger">{{ $errors->first('display_name') }}</p>
+					@endif
 			      </p>
 			    </div>
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="email" name="email" value="{{ old('email') }}" type="email" placeholder="Email">
+			        <input class="input @if ($errors->has('email')) is-danger @endif" id="email" name="email" value="{{ old('email') }}" type="email" placeholder="Email">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-envelope"></i>
 			        </span>
+			        @if ($errors->has('email'))
+			        	<p class="help is-danger">{{ $errors->first('email') }}</p>
+					@endif
 			      </p>
 			    </div>
 			  </div>
@@ -40,18 +46,24 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="cell_phone" name="cell_phone" value="{{ old('cell_phone') }}" type="tel" placeholder="Cell Phone">
+			        <input class="input @if ($errors->has('cell_phone')) is-danger @endif" id="cell_phone" name="cell_phone" value="{{ old('cell_phone') }}" type="tel" placeholder="Cell Phone">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-phone"></i>
 			        </span>
+			        @if ($errors->has('cell_phone'))
+			        	<p class="help is-danger">Phone numbers must be formatted as XXX-XXX-XXXX</p>
+					@endif
 			      </p>
 			    </div>
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="work_phone" name="work_phone" value="{{ old('work_phone') }}" type="tel" placeholder="Work Phone">
+			        <input class="input @if ($errors->has('work_phone')) is-danger @endif" id="work_phone" name="work_phone" value="{{ old('work_phone') }}" type="tel" placeholder="Work Phone">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-phone"></i>
 			        </span>
+			        @if ($errors->has('work_phone'))
+			        	<p class="help is-danger">Phone numbers must be formatted as XXX-XXX-XXXX</p>
+					@endif
 			      </p>
 			    </div>
 			  </div>
@@ -63,10 +75,13 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="address" name="address" value="{{ old('address') }}" type="text" placeholder="Address">
+			        <input class="input @if ($errors->has('address')) is-danger @endif" id="address" name="address" value="{{ old('address') }}" type="text" placeholder="Address">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-address-card-o"></i>
 			        </span>
+			        @if ($errors->has('address'))
+			        	<p class="help is-danger">{{ $errors->first('address') }}</p>
+					@endif
 			      </p>
 			    </div>
 			  </div>
@@ -78,10 +93,13 @@
 			  <div class="field-body">
 			    <div class="field">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="city" name="city" value="{{ old('city') }}" type="text" placeholder="City">
+			        <input class="input @if ($errors->has('city')) is-danger @endif" id="city" name="city" value="{{ old('city') }}" type="text" placeholder="City">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-map-marker"></i>
 			        </span>
+			        @if ($errors->has('city'))
+			        	<p class="help is-danger">{{ $errors->first('city') }}</p>
+					@endif
 			      </p>
 			    </div>
 			    <div class="field is-narrow">
@@ -148,10 +166,13 @@
 			    </div>
 			    <div class="field is-narrow">
 			      <p class="control is-expanded has-icons-left">
-			        <input class="input" id="zip" name="zip" value="{{ old('zip') }}" type="text" placeholder="ZIP">
+			        <input class="input @if ($errors->has('zip')) is-danger @endif" id="zip" name="zip" value="{{ old('zip') }}" type="text" placeholder="ZIP">
 			        <span class="icon is-small is-left">
 			          <i class="fa fa-home"></i>
 			        </span>
+			        @if ($errors->has('zip'))
+			        	<p class="help is-danger">{{ $errors->first('zip') }}</p>
+					@endif
 			      </p>
 			    </div>
 			  </div>

@@ -72,18 +72,18 @@ class PersonsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                'display_name' => 'required|min:5|max:255',
-                'email' => 'nullable|min:5|max:255',
-                'cell_phone' => 'nullable|min:7|max:20',
-                'work_phone' => 'nullable|min:7|max:20',
+                'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'email' => 'nullable|email|min:5|max:255',
+                'cell_phone' => 'nullable|min:12|max:12|regex:/^[2-9]\d{2}-\d{3}-\d{4}$/',
+                'work_phone' => 'nullable|min:12|max:12|regex:/^[2-9]\d{2}-\d{3}-\d{4}$/',
                 'address' => 'required|min:5|max:255',
                 'city' => 'required|min:5|max:255',
-                'state' => 'required|min:2|max:2',
-                'zip' => 'required|min:5|max:10',
-                'type_id' => 'required|min:1|max:1'
+                'state' => 'required|min:2|max:2|alpha',
+                'zip' => 'required|min:5|max:10|integer',
+                'type_id' => 'required|min:1|max:1|integer'
             ]);
 
-        $remove = array(".", "_", "/", "(", ")");
+        $remove = array(".", "_", "/", "\'", "(", ")");
 
         $contact = Person::create([
                 'display_name' => $request->display_name,
