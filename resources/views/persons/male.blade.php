@@ -5,7 +5,7 @@
     <div style="height:150px;"></div>
     <div class="container">
       <h1 class="title">Persons</h1>
-      <h2 class="subtitle">Here is a list of the organiztions in the RLO Portal</h2>
+      <h2 class="subtitle">Here is a list of the persons in the RLO Portal</h2>
       <hr>
       <nav id="persons" class="panel">
         <p class="panel-heading">Person Contacts</p>
