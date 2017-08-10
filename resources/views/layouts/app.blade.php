@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body style="background-color:#FFFFFF;">
+    @if (Auth::check())
     <section id="law-nav" class="is-sticky">
         <div class="hero is-primary">
           <div class="hero-head">
@@ -26,8 +27,6 @@
                     <img src="/img/rloky.png" alt="Logo">
                   </a>
                 </div>
-                @if (Auth::check())
-
                 <span class="nav-toggle" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
                   <span></span>
                   <span></span>
@@ -61,11 +60,9 @@
                     </div>
                   </span>
                 </div>
-                @endif
               </div>
             </header>
           </div>
-
 
             <!-- Hero footer: for conference -->
             <div class="hero-foot{{ set_shown('conference') }}">
@@ -105,6 +102,7 @@
             </div>
         </nav>
     </section>
+    @endif
 
     @yield('content')
 
