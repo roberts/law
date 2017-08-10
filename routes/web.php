@@ -13,14 +13,14 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
-Route::get('desk', function () { return view('desk'); });
-Route::get('conference', function () { return view('conference'); });
-Route::get('accounting', function () { return view('accounting'); });
+Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('desk', function () { return view('desk'); })->middleware('auth');
+Route::get('conference', function () { return view('conference'); })->middleware('auth');
+Route::get('accounting', function () { return view('accounting'); })->middleware('auth');
 Route::get('/@{user}', 'UsersController@show');
 Route::get('files', 'FilesController@index');
 Route::group(['prefix' => 'files'], function () {
