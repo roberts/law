@@ -15,8 +15,8 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('display_name')->unique(); // Typically is first and last name or the name of the corporation
-            $table->unsignedInteger('type_id'); // Male of Female (sex) if person, and coporation type if corporation
+            $table->string('display_name')->unique(); // Typically is first and last name or the name of the organization
+            $table->unsignedInteger('type_id'); // Male of Female (sex) if person, and coporation type if organization
             $table->unsignedInteger('user_id')->nullable()->unique(); // Used when person is user in system. If used, can only be one to one relationship
             $table->string('last_name')->nullable(); // Required for persons. Default greeting is prefix last_name or if prefix is NULL then Mr. or Ms. last_name depending on sex
             $table->string('first_name')->nullable();
