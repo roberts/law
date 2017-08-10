@@ -21,6 +21,11 @@ class CreateInjuriesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::table('injuries', function($table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('restrict')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -30,6 +35,13 @@ class CreateInjuriesTable extends Migration
      */
     public function down()
     {
+        Schema::table('injuries', function ($table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['permission_id']);
+        });
+        
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('injuries');
+        Schema::enableForeignKeyConstraints();
     }
 }

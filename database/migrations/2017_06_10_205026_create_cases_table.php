@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFileablesTable extends Migration
+class CreateCasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateFileablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fileables', function (Blueprint $table) {
+        Schema::create('cases', function (Blueprint $table) { // Also called Litigation
             $table->increments('id');
-            $table->unsignedInteger('file_id');
-            $table->string('fileable_type');
-            $table->unsignedInteger('fileable_id');
+            $table->string('case_number');
+            // Can be composed of multiple matters (files)
+            $table->string('county');
+            $table->string('state');
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
+            $table->softDeletes();
         });
 
-        Schema::table('fileables', function($table) {
-            $table->foreign('file_id')->references('id')->on('files')->onDelete('restrict')->onUpdate('cascade');
+        Schema::table('cases', function($table) {
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
         });
@@ -37,14 +38,13 @@ class CreateFileablesTable extends Migration
      */
     public function down()
     {
-        Schema::table('fileables', function ($table) {
-            $table->dropForeign(['file_id']);
+        Schema::table('cases', function ($table) {
             $table->dropForeign(['created_by']);
             $table->dropForeign(['updated_by']);
         });
 
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('fileables');
+        Schema::dropIfExists('cases');
         Schema::enableForeignKeyConstraints();
     }
 }

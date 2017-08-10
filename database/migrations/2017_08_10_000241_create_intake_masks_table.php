@@ -15,6 +15,7 @@ class CreateIntakeMasksTable extends Migration
     {
         Schema::create('intake_masks', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('client_id');
             $table->string('mine_start_date');
             $table->string('mine_end_date');
             $table->string('underground_pre98');
@@ -53,6 +54,12 @@ class CreateIntakeMasksTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::table('intake_masks', function($table) {
+            $table->foreign('client_id')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -62,6 +69,14 @@ class CreateIntakeMasksTable extends Migration
      */
     public function down()
     {
+        Schema::table('intake_masks', function ($table) {
+            $table->dropForeign(['client_id']);
+            $table->dropForeign(['created_by']);
+            $table->dropForeign(['updated_by']);
+        });
+
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('intake_masks');
+        Schema::enableForeignKeyConstraints();
     }
 }

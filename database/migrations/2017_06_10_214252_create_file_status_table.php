@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFileablesTable extends Migration
+class CreateFileStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,19 @@ class CreateFileablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fileables', function (Blueprint $table) {
+        Schema::create('file_status', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('file_id');
-            $table->string('fileable_type');
-            $table->unsignedInteger('fileable_id');
+            $table->unsignedInteger('status_id');
             $table->unsignedInteger('created_by');
-            $table->unsignedInteger('updated_by');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->softDeletes();
         });
 
-        Schema::table('fileables', function($table) {
+        Schema::table('file_status', function($table) {
             $table->foreign('file_id')->references('id')->on('files')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
@@ -37,14 +36,14 @@ class CreateFileablesTable extends Migration
      */
     public function down()
     {
-        Schema::table('fileables', function ($table) {
+        Schema::table('file_status', function ($table) {
             $table->dropForeign(['file_id']);
+            $table->dropForeign(['status_id']);
             $table->dropForeign(['created_by']);
-            $table->dropForeign(['updated_by']);
         });
 
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('fileables');
+        Schema::dropIfExists('file_status');
         Schema::enableForeignKeyConstraints();
     }
 }

@@ -17,7 +17,7 @@ class CreateUserPermissionTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('permission_id');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->useCurrent();
         });
         
         Schema::table('user_permission', function($table) {

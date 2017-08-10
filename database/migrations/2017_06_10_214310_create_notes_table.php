@@ -24,6 +24,11 @@ class CreateNotesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::table('notes', function($table) {
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -33,6 +38,13 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
+        Schema::table('notes', function ($table) {
+            $table->dropForeign(['created_by']);
+            $table->dropForeign(['updated_by']);
+        });
+
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('notes');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -23,6 +23,14 @@ class CreateRelationsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::table('relations', function($table) {
+            $table->foreign('relationship_id')->references('id')->on('relationships')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('related_id')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -32,6 +40,16 @@ class CreateRelationsTable extends Migration
      */
     public function down()
     {
+        Schema::table('relations', function ($table) {
+            $table->dropForeign(['relationship_id']);
+            $table->dropForeign(['file_id']);
+            $table->dropForeign(['related_id']);
+            $table->dropForeign(['created_by']);
+            $table->dropForeign(['updated_by']);
+        });
+
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('relations');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -51,6 +51,13 @@ class CreateContactsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::table('contacts', function($table) {
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -60,6 +67,15 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
+        Schema::table('contacts', function ($table) {
+            $table->dropForeign(['type_id']);
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['created_by']);
+            $table->dropForeign(['updated_by']);
+        });
+
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('contacts');
+        Schema::enableForeignKeyConstraints();
     }
 }
