@@ -72,6 +72,7 @@ class FilesController extends Controller
      */
     public function closed()
     {
+        Auth::logout();
         $files = File::orderBy('id')->get();
 
         return view('files.closed', compact('files'));
