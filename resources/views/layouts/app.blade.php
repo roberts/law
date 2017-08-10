@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #5EAB00; ">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="/img/RLOicon.png" />
+    <link rel="manifest" href="/manifest.json">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,8 +15,8 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
-<body>
-    <section id="law-nav" class="is-sticky{{ set_hidden('login') }}">
+<body style="background-color:#FFFFFF;">
+    <section id="law-nav" class="is-sticky">
         <div class="hero is-primary">
           <div class="hero-head">
             <header class="nav">
