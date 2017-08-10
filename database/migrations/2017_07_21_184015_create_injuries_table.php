@@ -23,8 +23,8 @@ class CreateInjuriesTable extends Migration
         });
 
         Schema::table('injuries', function($table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
         });
     }
 
@@ -36,8 +36,8 @@ class CreateInjuriesTable extends Migration
     public function down()
     {
         Schema::table('injuries', function ($table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['permission_id']);
+            $table->dropForeign(['created_by']);
+            $table->dropForeign(['updated_by']);
         });
         
         Schema::disableForeignKeyConstraints();
