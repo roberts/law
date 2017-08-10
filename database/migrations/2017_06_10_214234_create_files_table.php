@@ -24,6 +24,7 @@ class CreateFilesTable extends Migration
             // Can have more than one defendant through relations table
             // Current status determined by most recent entry on file_status table so has time stamp all of the changes
             $table->unsignedInteger('source_id');
+            $table->unsignedInteger('referral_id')->nullable(); // Use only when source_id is 1 or 2 (general referral or referral from law firm) & the referral contact is known
             $table->unsignedInteger('case_id')->nullable(); // One case(litigation) may have have multiple matters(files)
             $table->date('sol')->nullable(); // Date field for statute of limitiations
             $table->unsignedInteger('created_by');
@@ -35,6 +36,7 @@ class CreateFilesTable extends Migration
         Schema::table('files', function($table) {
             $table->foreign('counsel')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('source_id')->references('id')->on('sources')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('referral_id')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('case_id')->references('id')->on('cases')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
@@ -51,6 +53,7 @@ class CreateFilesTable extends Migration
         Schema::table('files', function ($table) {
             $table->dropForeign(['counsel']);
             $table->dropForeign(['source_id']);
+            $table->dropForeign(['referral_id']);
             $table->dropForeign(['case_id']);
             $table->dropForeign(['created_by']);
             $table->dropForeign(['updated_by']);
