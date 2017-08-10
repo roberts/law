@@ -15,9 +15,9 @@ class CreateFileablesTable extends Migration
     {
         Schema::create('fileables', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('file_id');
-            $table->string('fileable_type');
-            $table->unsignedInteger('fileable_id');
+            $table->unsignedInteger('file_id')->index();
+            $table->string('fileable_type')->index();
+            $table->unsignedInteger('fileable_id')->index();
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();

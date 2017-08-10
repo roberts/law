@@ -15,7 +15,7 @@ class CreateCasesTable extends Migration
     {
         Schema::create('cases', function (Blueprint $table) { // Also called Litigation
             $table->increments('id');
-            $table->string('case_number');
+            $table->string('case_number')->index();
             // Can be composed of multiple matters (files)
             $table->string('county');
             $table->string('state');

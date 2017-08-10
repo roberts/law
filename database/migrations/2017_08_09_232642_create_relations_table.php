@@ -15,9 +15,9 @@ class CreateRelationsTable extends Migration
     {
         Schema::create('relations', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('relationship_id'); // Id on relationship table. Relation Types = defendant, co-counsel, family, coworker, provider, employer, mine, etc.
-            $table->unsignedInteger('file_id');
-            $table->unsignedInteger('related_id'); // Person or organization on contacts table. Limited by relationship type.
+            $table->unsignedInteger('relationship_id')->index(); // Id on relationship table. Relation Types = defendant, co-counsel, family, coworker, provider, employer, mine, etc.
+            $table->unsignedInteger('file_id')->index();
+            $table->unsignedInteger('related_id')->index(); // Person or organization on contacts table. Limited by relationship type.
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();

@@ -15,8 +15,8 @@ class CreateOrganizationMembersTable extends Migration
     {
         Schema::create('organization_members', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('organization_id'); // Id of firm or organization on contacts table
-            $table->unsignedInteger('member_id'); // Id of person on contacts table
+            $table->unsignedInteger('organization_id')->index(); // Id of firm or organization on contacts table
+            $table->unsignedInteger('member_id')->index(); // Id of person on contacts table
             $table->boolean('admin')->default(0); // If member is a user and should have admin rights, then put 1
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');

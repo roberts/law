@@ -15,7 +15,7 @@ class CreateStatusesTable extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug')->unique()->index();
+            $table->string('slug')->unique();
             $table->string('title')->unique();
             $table->string('description')->nullable();
             $table->tinyInteger('parent')->nullable()->unsigned()->index(); //id of primary status for this secondary status.

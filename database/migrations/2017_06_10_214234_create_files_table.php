@@ -15,7 +15,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) { // Also called Matters
             $table->increments('id');
-            $table->string('file_number'); // YYYY-MM-XXXXX where YYYY-MM is year and month of creation and then auto-increase by 1 for the last 5 digits.
+            $table->string('file_number')->index(); // YYYY-MM-XXXXX where YYYY-MM is year and month of creation and then auto-increase by 1 for the last 5 digits.
             $table->unsignedInteger('counsel'); // Firm that owns the matter, so it is organization id on contacts table. 
             // Can have multiple firms that have access to it as co-counsels via relations table
             // Can have only one type as defined by fileable pivot table: Dust Mask, Car Wreck, DUI, Estate Planning, etc.
@@ -25,7 +25,7 @@ class CreateFilesTable extends Migration
             // Current status determined by most recent entry on file_status table so has time stamp all of the changes
             $table->unsignedInteger('source_id');
             $table->unsignedInteger('referral_id')->nullable(); // Use only when source_id is 1 or 2 (general referral or referral from law firm) & the referral contact is known
-            $table->unsignedInteger('case_id')->nullable(); // One case(litigation) may have have multiple matters(files)
+            $table->unsignedInteger('case_id')->nullable()->index(); // One case(litigation) may have have multiple matters(files)
             $table->date('sol')->nullable(); // Date field for statute of limitiations
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');

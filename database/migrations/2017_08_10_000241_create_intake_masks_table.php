@@ -15,7 +15,7 @@ class CreateIntakeMasksTable extends Migration
     {
         Schema::create('intake_masks', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('client_id');
+            $table->unsignedInteger('client_id')->index();
             $table->string('mine_start_date');
             $table->string('mine_end_date');
             $table->string('underground_pre98');

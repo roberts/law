@@ -15,7 +15,7 @@ class CreateFileStatusTable extends Migration
     {
         Schema::create('file_status', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('file_id');
+            $table->unsignedInteger('file_id')->index();
             $table->unsignedInteger('status_id');
             $table->unsignedInteger('created_by');
             $table->timestamp('created_at')->useCurrent();
