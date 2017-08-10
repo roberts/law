@@ -36,10 +36,36 @@
                   <a href="/conference" class="nav-item{{ set_active('conference*') }}">Conference Room</a>
                   <a href="/accounting" class="nav-item{{ set_active('accounting*') }}">Accounting</a>
                   <span class="nav-item">
-                    <a href="/login" class="button is-primary is-inverted">
-                      <span class="icon"><i class="fa fa-sign-in"></i></span>
-                      <span>Login</span>
-                    </a>
+                    <div class="dropdown is-active">
+                      <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                          <span>{{{ Auth::user()->name }}}</span>
+                          <span class="icon is-small">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                          </span>
+                        </button>
+                      </div>
+                      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content" style="z-index: 1000;">
+                          <a href="#" class="dropdown-item">
+                            Dropdown item
+                          </a>
+                          <a class="dropdown-item">
+                            Other dropdown item
+                          </a>
+                          <a href="#" class="dropdown-item is-active">
+                            Active dropdown item
+                          </a>
+                          <a href="#" class="dropdown-item">
+                            Other dropdown item
+                          </a>
+                          <hr class="dropdown-divider">
+                          <a href="#" class="dropdown-item">
+                            With a divider
+                          </a>
+                        </div>
+                      </div>
+                    </div>
                   </span>
                 </div>
               </div>
