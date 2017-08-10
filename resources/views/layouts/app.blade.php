@@ -79,9 +79,9 @@
         </div>
         <nav class="navbar has-shadow{{ set_shown('files*') }}">
             <div class="navbar-brand container">
-                <a class="navbar-item is-tab " href="/">Matter</a>
-                <a class="navbar-item is-tab " href="/">Client</a>
-                <a class="navbar-item is-tab " href="/">Intake</a>
+                <a class="navbar-item is-tab " href="/">Matters</a>
+                <a class="navbar-item is-tab " href="/">Clients</a>
+                <a class="navbar-item is-tab " href="/">Intake Forms</a>
             </div>
         </nav>
     </section>

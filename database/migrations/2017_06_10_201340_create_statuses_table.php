@@ -18,6 +18,7 @@ class CreateStatusesTable extends Migration
             $table->string('slug')->unique()->index();
             $table->string('title')->unique();
             $table->string('description')->nullable();
+            $table->tinyInteger('parent')->nullable()->unsigned()->index(); //id of primary status for this secondary status.
             $table->timestamps();
             $table->softDeletes();
         });
