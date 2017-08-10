@@ -17,8 +17,8 @@ class OrganizationMembersTableSeeder extends Seeder
             'organization_id'   => 1,
             'member_id'         => 2,
             'admin'             => 1,
-            'created_by'        => 3,
-            'updated_by'        => 3,
+            'created_by'        => 2,
+            'updated_by'        => 2,
             'created_at'        => $now,
             'updated_at'        => $now,
         ]);
@@ -26,8 +26,8 @@ class OrganizationMembersTableSeeder extends Seeder
         DB::table('organization_members')->insert([
             'organization_id'   => 1,
             'member_id'         => 3,
-            'created_by'        => 3,
-            'updated_by'        => 3,
+            'created_by'        => 2,
+            'updated_by'        => 2,
             'created_at'        => $now,
             'updated_at'        => $now,
         ]);

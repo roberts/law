@@ -26,8 +26,8 @@ class ContactsTableSeeder extends Seeder
             'website'       => 'rloky.com',
             'corp_name'     => 'Roberts Law Office, PLLC',
             'dba'           => 'Roberts Law Office',
-            'created_by'    => 3,
-            'updated_by'    => 3,
+            'created_by'    => 2,
+            'updated_by'    => 2,
             'created_at'    => $now,
             'updated_at'    => $now,
         ]);
@@ -52,14 +52,14 @@ class ContactsTableSeeder extends Seeder
             'website'       => 'rloky.com',
             'title'         => 'Managing Attorney',
             'birth_date'    => '1985-01-18',
-            'created_by'    => 3,
-            'updated_by'    => 3,
+            'created_by'    => 2,
+            'updated_by'    => 2,
             'created_at'    => $now,
             'updated_at'    => $now,
         ]);
         
         DB::table('contacts')->insert([
-            'slug'          => 'DrewRoberts',
+            'slug'          => 'drewroberts',
             'display_name'  => 'Drew Roberts',
             'type_id'       => 1,
             'user_id'       => 2,
@@ -77,8 +77,8 @@ class ContactsTableSeeder extends Seeder
             'website'       => 'drewroberts.com',
             'title'         => 'Web Developer',
             'birth_date'    => '1983-05-20',
-            'created_by'    => 3,
-            'updated_by'    => 3,
+            'created_by'    => 2,
+            'updated_by'    => 2,
             'created_at'    => $now,
             'updated_at'    => $now,
         ]);
