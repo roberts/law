@@ -60,7 +60,7 @@ class PersonsController extends Controller
      */
     public function create()
     {
-        //
+        return view('persons.create');
     }
 
     /**
@@ -71,7 +71,33 @@ class PersonsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+                'display_name' => 'required|min:5|max:255',
+                'email' => 'nullable|min:5|max:255',
+                'cell_phone' => 'nullable|min:7|max:20',
+                'work_phone' => 'nullable|min:7|max:20',
+                'address' => 'required|min:5|max:255',
+                'city' => 'required|min:5|max:255',
+                'state' => 'required|min:2|max:2',
+                'zip' => 'required|min:5|max:10',
+                'type_id' => 'required|min:1|max:1'
+            ]);
+
+        $this->create([
+                'display_name' => $request->display_name,
+                'email' => $request->email ?: null,
+                'cell_phone' => $request->cell_phone ?: null,
+                'work_phone' => $request->work_phone ?: null,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+                'type_id' => $request->type_id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+
+        return back();
     }
 
     /**

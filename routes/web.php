@@ -15,7 +15,6 @@ Route::get('/', function () { return view('welcome'); })->middleware('auth');
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('desk', function () { return view('desk'); })->middleware('auth');
 Route::get('conference', function () { return view('conference'); })->middleware('auth');
 Route::get('accounting', function () { return view('accounting'); })->middleware('auth');
@@ -28,11 +27,14 @@ Route::group(['prefix' => 'files'], function () {
     Route::get('litigation', 'FilesController@litigation');
     Route::get('closed', 'FilesController@closed');
     Route::get('create', 'FilesController@create');
+    Route::post('create', 'FilesController@store');
     Route::get('{file}', 'FilesController@show');
 });
 
 Route::get('organizations', 'OrganizationsController@index');
 Route::group(['prefix' => 'organizations'], function () {
+    Route::get('create', 'OrganizationsController@create');
+    Route::post('create', 'OrganizationsController@store');
     Route::get('{organization}', 'OrganizationsController@show');
 });
 
@@ -40,5 +42,7 @@ Route::get('persons', 'PersonsController@index');
 Route::group(['prefix' => 'persons'], function () {
 	Route::get('male', 'PersonsController@male');
 	Route::get('female', 'PersonsController@female');
+    Route::get('create', 'PersonsController@create');
+    Route::post('create', 'PersonsController@store');
     Route::get('{person}', 'PersonsController@show');
 });
