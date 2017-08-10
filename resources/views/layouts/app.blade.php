@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>RLO Portal</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -25,18 +25,20 @@
                     <img src="/img/rloky.png" alt="Logo">
                   </a>
                 </div>
+                @if (Auth::check())
+
                 <span class="nav-toggle" @click="showNav = !showNav" :class="{ 'is-active': showNav }">
                   <span></span>
                   <span></span>
                   <span></span>
                 </span>
-                <div class="nav-right nav-menu" :class="{ 'is-active': showNav }">
+                <div class="nav-right nav-menu" :class="{ 'is-active': showNav }" style="overflow: visible;">
                   <a href="/desk" class="nav-item{{ set_active('desk*') }}">Desk</a>
                   <a href="/files" class="nav-item{{ set_active('files*') }}">File Room</a>
                   <a href="/conference" class="nav-item{{ set_active('conference*') }}">Conference Room</a>
                   <a href="/accounting" class="nav-item{{ set_active('accounting*') }}">Accounting</a>
                   <span class="nav-item">
-                    <div class="dropdown is-active">
+                    <div class="dropdown is-hoverable">
                       <div class="dropdown-trigger">
                         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                           <span>{{{ Auth::user()->name }}}</span>
@@ -46,28 +48,19 @@
                         </button>
                       </div>
                       <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                        <div class="dropdown-content" style="z-index: 1000;">
-                          <a href="#" class="dropdown-item">
-                            Dropdown item
-                          </a>
-                          <a class="dropdown-item">
-                            Other dropdown item
-                          </a>
-                          <a href="#" class="dropdown-item is-active">
-                            Active dropdown item
-                          </a>
-                          <a href="#" class="dropdown-item">
-                            Other dropdown item
-                          </a>
+                        <div class="dropdown-content">
+                          <a href="#" class="dropdown-item" style="color:#7a7a7a; text-align:left;">View Profile</a>
+                          <a href="#" class="dropdown-item" style="color: #7a7a7a; text-align:left;">View Firm</a>
+                          <a href="#" class="dropdown-item" style="color: #7a7a7a; text-align:left;">View My Notes</a>
                           <hr class="dropdown-divider">
-                          <a href="#" class="dropdown-item">
-                            With a divider
-                          </a>
+                          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" style="color: #7a7a7a; text-align:left;">Logout</a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                         </div>
                       </div>
                     </div>
                   </span>
                 </div>
+                @endif
               </div>
             </header>
           </div>
