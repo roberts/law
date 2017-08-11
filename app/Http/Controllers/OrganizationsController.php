@@ -86,7 +86,7 @@ class OrganizationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('contacts.organizations.create');
     }
 
     /**
@@ -97,7 +97,46 @@ class OrganizationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+                'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'type_id' => 'required|min:1|max:1|integer',
+                'address' => 'required|min:5|max:255',
+                'city' => 'required|min:5|max:255',
+                'state' => 'required|min:2|max:2|alpha',
+                'zip' => 'required|min:5|max:99999|integer',
+                'corp_name' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'dba' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'branch' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'ein' => 'nullable|min:10|max:10|regex:/^[0-9]\d{1}-\d{7}$/',
+                'corp_state' => 'nullable|min:2|max:2|alpha',
+                'work_phone' => 'nullable|min:12|max:12|regex:/^[2-9]\d{2}-\d{3}-\d{4}$/',
+                'website' => 'nullable|max:255',
+                'fax' => 'nullable|min:12|max:12|regex:/^[2-9]\d{2}-\d{3}-\d{4}$/'
+            ]);
+
+        $remove = array(".", "_", "/", "\'", "(", ")");
+
+        $contact = Person::create([
+                'display_name' => $request->display_name,
+                'slug' => str_replace($remove, "", str_replace(" ", "-", strtolower($request->display_name))),
+                'type_id' => $request->type_id,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+                'corp_name' => $request->corp_name ?: null,
+                'dba' => $request->dba ?: null,
+                'branch' => $request->branch ?: null,
+                'ein' => $request->ein ?: null,
+                'corp_state' => $request->corp_state ?: null,
+                'work_phone' => $request->work_phone ?: null,
+                'website' => $request->website ?: null,
+                'fax' => $request->fax ?: null,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+
+        return back();
     }
 
     /**

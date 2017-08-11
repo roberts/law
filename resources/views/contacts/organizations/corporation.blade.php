@@ -31,7 +31,11 @@
             <a href="{{ $organization->path() }}" class="panel-block">
             @endif
               <span class="panel-icon">
+                @if ($organization->type_id == 3)
+                <i class="fa fa-balance-scale"></i>
+                @else
                 <i class="fa fa-building-o"></i>
+                @endif
               </span>
               {{ $organization->display_name }}
             </a>

@@ -29,8 +29,8 @@ class CreateContactsTable extends Migration
             $table->string('initials', 3)->nullable();
             $table->string('address');
             $table->string('city');
-            $table->string('state');
-            $table->string('zip');
+            $table->string('state', 2);
+            $table->string('zip', 5);
             $table->string('work_phone', 25)->nullable();
             $table->string('home_phone', 25)->nullable();
             $table->string('cell_phone', 25)->nullable();
@@ -40,11 +40,12 @@ class CreateContactsTable extends Migration
             $table->string('title')->nullable(); // Used only for persons
             $table->date('birth_date')->nullable(); // Used only for persons
             $table->string('birth_city')->nullable(); // Used only for persons
-            $table->string('birth_state')->nullable(); // Used only for persons
+            $table->string('birth_state', 2)->nullable(); // Used only for persons
             $table->string('ssn', 60)->nullable(); // Used only for persons
             $table->string('dln', 60)->nullable(); // Used only for persons
-            $table->string('dl_state')->nullable(); // Used only for persons
+            $table->string('dl_state', 2)->nullable(); // Used only for persons
             $table->string('ein', 60)->nullable(); // Used only for organizations
+            $table->string('corp_state', 2)->nullable(); // Used only for persons
             $table->string('corp_name')->nullable(); // Used only for organizations. Official corporation name like Tipoff, Inc.
             $table->string('dba')->nullable(); // Used only for organizations
             $table->string('branch')->nullable(); // Used only for organizations
