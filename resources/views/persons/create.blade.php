@@ -41,25 +41,6 @@
 			</div>
 
 			<div class="field is-horizontal">
-			  <div class="field-label">
-			  </div>
-			  <div class="field-body">
-			    <div class="field is-narrow">
-			      <div class="control">
-			        <label class="radio">
-			          <input type="radio" id="type_id" name="type_id" value="1" checked>
-			          Male
-			        </label>
-			        <label class="radio">
-			          <input type="radio" id="type_id" name="type_id" value="2">
-			          Female
-			        </label>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-
-			<div class="field is-horizontal">
 			  <div class="field-label is-normal">
 			  </div>
 			  <div class="field-body">
@@ -164,6 +145,25 @@
 			        	<p class="help is-danger">{{ $errors->first('zip') }}</p>
 					@endif
 			      </p>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="field is-horizontal">
+			  <div class="field-label">
+			  </div>
+			  <div class="field-body">
+			    <div class="field is-narrow">
+			      <div class="control">
+			        <label class="radio">
+			          <input type="radio" id="type_id" name="type_id" value="1" checked>
+			          Male
+			        </label>
+			        <label class="radio">
+			          <input type="radio" id="type_id" name="type_id" value="2">
+			          Female
+			        </label>
+			      </div>
 			    </div>
 			  </div>
 			</div>
