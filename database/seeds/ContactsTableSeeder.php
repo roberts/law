@@ -16,7 +16,7 @@ class ContactsTableSeeder extends Seeder
         DB::table('contacts')->insert([
             'slug'          => 'rlo',
             'display_name'  => 'Roberts Law Office, PLLC',
-            'type_id'       => 6,
+            'type_id'       => 3,
             'address'       => '301 E Main Street, Suite 1000-C',
             'city'          => 'Lexington',
             'state'         => 'KY',

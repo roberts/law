@@ -28,11 +28,27 @@ class TypesTableSeeder extends Seeder
             'created_at'    => $now,
             'updated_at'    => $now,
         ]);
+
+        DB::table('types')->insert([
+            'slug'          => 'firm',
+            'title'         => 'Law Firm',
+            'description'   => 'Contact organizations that are law firms.',
+            'created_at'    => $now,
+            'updated_at'    => $now,
+        ]);
         
         DB::table('types')->insert([
             'slug'          => 'corporation',
             'title'         => 'Corporation',
             'description'   => 'Contact organizations that are corporations.',
+            'created_at'    => $now,
+            'updated_at'    => $now,
+        ]);
+
+        DB::table('types')->insert([
+            'slug'          => 'llc',
+            'title'         => 'Limited Liability Company',
+            'description'   => 'Contact organizations that are limited liability companies.',
             'created_at'    => $now,
             'updated_at'    => $now,
         ]);
@@ -49,14 +65,6 @@ class TypesTableSeeder extends Seeder
             'slug'          => 'partnership',
             'title'         => 'Partnership',
             'description'   => 'Contact organizations that are partnerships.',
-            'created_at'    => $now,
-            'updated_at'    => $now,
-        ]);
-
-        DB::table('types')->insert([
-            'slug'          => 'llc',
-            'title'         => 'Limited Liability Company',
-            'description'   => 'Contact organizations that are limited liability companies.',
             'created_at'    => $now,
             'updated_at'    => $now,
         ]);

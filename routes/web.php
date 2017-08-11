@@ -35,6 +35,10 @@ Route::get('contacts', 'ContactsController@index');
 Route::group(['prefix' => 'contacts'], function () {
 	Route::get('organizations', 'OrganizationsController@index');
 	Route::group(['prefix' => 'organizations'], function () {
+		Route::get('firm', 'OrganizationsController@firm');
+		Route::get('corporation', 'OrganizationsController@corporation');
+		Route::get('llc', 'OrganizationsController@llc');
+		Route::get('other', 'OrganizationsController@other');
 	    Route::get('create', 'OrganizationsController@create');
 	    Route::post('create', 'OrganizationsController@store');
 	    Route::get('{organization}', 'OrganizationsController@show');

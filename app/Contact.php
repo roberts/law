@@ -39,7 +39,7 @@ class Contact extends Model
      */
     public function path()
     {
-    	if ($this->type_id == 1 || $this->type_id == 2) {
+    	if ($this->type_id < 3) {
         	return "/contacts/persons/{$this->slug}";
     	} else {
 		    return "/contacts/organizations/{$this->slug}";

@@ -18,11 +18,11 @@
           </p>
         </div>
         <p class="panel-tabs">
-          <a href="/contacts/organizations" class="is-active">all</a>
+          <a href="/contacts/organizations">all</a>
           <a href="/contacts/organizations/corporation">corp</a>
           <a href="/contacts/organizations/llc">llc</a>
           <a href="/contacts/organizations/firm">firm</a>
-          <a href="/contacts/organizations/other">other</a>
+          <a href="/contacts/organizations/other" class="is-active">other</a>
         </p>
         @foreach ($organizations as $organization)
             @if ($organization->id == 1 || $organization->partner == 1)

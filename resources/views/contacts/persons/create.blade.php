@@ -8,7 +8,7 @@
       <h2 class="subtitle">Add a new contact to the RLO Portal</h2>
       <hr>
 
-        <form method="POST" action="/persons/create">
+        <form method="POST" action="/contacts/persons/create">
         {{ csrf_field() }}
 			<div class="field is-horizontal">
 			  <div class="field-label is-normal">

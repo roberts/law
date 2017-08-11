@@ -62,6 +62,6 @@ class Organization extends Model
      */
     public function path()
     {
-        return "/organizations/{$this->slug}";
+        return "/contacts/organizations/{$this->slug}";
     }
 }
