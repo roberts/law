@@ -36,7 +36,7 @@
                   <a href="/desk" class="nav-item{{ set_active('desk*') }}">Desk</a>
                   <a href="/files" class="nav-item{{ set_active('files*') }}">File Room</a>
                   <a href="/conference" class="nav-item{{ set_active('conference*') }}">Conference Room</a>
-                  <a href="/accounting" class="nav-item{{ set_active('accounting*') }}">Accounting</a>
+                  <a href="/contacts" class="nav-item{{ set_active('contacts*') }}">Contacts</a>
                   <span class="nav-item">
                     <div class="dropdown is-hoverable">
                       <div class="dropdown-trigger">
@@ -52,6 +52,7 @@
                           <a href="#" class="dropdown-item" style="color:#7a7a7a; text-align:left;">View Profile</a>
                           <a href="#" class="dropdown-item" style="color: #7a7a7a; text-align:left;">View Firm</a>
                           <a href="#" class="dropdown-item" style="color: #7a7a7a; text-align:left;">View My Notes</a>
+                          <a href="/accounting" class="dropdown-item" style="color: #7a7a7a; text-align:left;">Accounting</a>
                           <hr class="dropdown-divider">
                           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" style="color: #7a7a7a; text-align:left;">Logout</a>
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
@@ -81,12 +82,24 @@
                 <nav class="tabs is-boxed is-fullwidth">
                     <div class="container">
                         <ul>
-                            <li class="{{ set_active('files') }}"><a href="/files">All Files</a></li>
+                            <li class="{{ set_active('files/details*') }}"><a href="/files/details">File Details</a></li>
                             <li class="{{ set_active('files/leads') }}"><a href="/files/leads">Leads</a></li>
                             <li class="{{ set_active('files/pre') }}"><a href="/files/pre">Pre-Litigation</a></li>
                             <li class="{{ set_active('files/litigation') }}"><a href="/files/litigation">Litigation</a></li>
                             <li class="{{ set_active('files/closed') }}"><a href="/files/closed">Closed</a></li>
                             <li class="{{ set_active('files/create') }}"><a href="/files/create">New File</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Hero footer: for contacts -->
+            <div class="hero-foot{{ set_shown('contacts*') }}">
+                <nav class="tabs is-boxed is-fullwidth">
+                    <div class="container">
+                        <ul>
+                            <li class="{{ set_active('contacts/persons*') }}"><a href="/contacts/persons">Persons</a></li>
+                            <li class="{{ set_active('contacts/organizations*') }}"><a href="/contacts/organizations">Organizations</a></li>
                         </ul>
                     </div>
                 </nav>
