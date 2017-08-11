@@ -101,6 +101,12 @@ class PersonsController extends Controller
             ]);
 
         $remove = array(".", "_", "/", "\'", "(", ")");
+        if ($request->ssn) {
+            $request->merge(array('ssn' => bcrypt($request->ssn)));
+        }
+        if ($request->dln) {
+            $request->merge(array('dln' => bcrypt($request->dln)));
+        }
 
         $contact = Person::create([
                 'display_name' => $request->display_name,
@@ -127,8 +133,8 @@ class PersonsController extends Controller
                 'birth_date' => $request->birth_date ?: null,
                 'birth_city' => $request->birth_city ?: null,
                 'birth_state' => $request->birth_state ?: null,
-                'ssn' => bcrypt($request->ssn) ?: null,
-                'dln' => bcrypt($request->dln) ?: null,
+                'ssn' => $request->ssn ?: null,
+                'dln' => $request->dln ?: null,
                 'dl_state' => $request->dl_state ?: null,
                 'created_by' => auth()->id(),
                 'updated_by' => auth()->id()
