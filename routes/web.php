@@ -31,18 +31,20 @@ Route::group(['prefix' => 'files'], function () {
     Route::get('{file}', 'FilesController@show');
 });
 
-Route::get('organizations', 'OrganizationsController@index');
-Route::group(['prefix' => 'organizations'], function () {
-    Route::get('create', 'OrganizationsController@create');
-    Route::post('create', 'OrganizationsController@store');
-    Route::get('{organization}', 'OrganizationsController@show');
-});
-
-Route::get('persons', 'PersonsController@index');
-Route::group(['prefix' => 'persons'], function () {
-	Route::get('male', 'PersonsController@male');
-	Route::get('female', 'PersonsController@female');
-    Route::get('create', 'PersonsController@create');
-    Route::post('create', 'PersonsController@store');
-    Route::get('{person}', 'PersonsController@show');
+Route::get('contacts', 'ContactsController@index');
+Route::group(['prefix' => 'contacts'], function () {
+	Route::get('organizations', 'OrganizationsController@index');
+	Route::group(['prefix' => 'organizations'], function () {
+	    Route::get('create', 'OrganizationsController@create');
+	    Route::post('create', 'OrganizationsController@store');
+	    Route::get('{organization}', 'OrganizationsController@show');
+	});
+	Route::get('persons', 'PersonsController@index');
+	Route::group(['prefix' => 'persons'], function () {
+		Route::get('male', 'PersonsController@male');
+		Route::get('female', 'PersonsController@female');
+	    Route::get('create', 'PersonsController@create');
+	    Route::post('create', 'PersonsController@store');
+	    Route::get('{person}', 'PersonsController@show');
+	});
 });

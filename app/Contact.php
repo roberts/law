@@ -3,32 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Builder;
 
-class Person extends Model
+class Contact extends Model
 {
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'contacts';
-
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('people', function (Builder $builder) {
-            $builder->where('type_id', '<', 3);
-        });
-    }
-
     use SoftDeletes;
 
     /**
@@ -62,6 +39,10 @@ class Person extends Model
      */
     public function path()
     {
-        return "/contacts/persons/{$this->slug}";
+    	if ($this->type_id == 1 || $this->type_id == 2) {
+        	return "/contacts/persons/{$this->slug}";
+    	} else {
+		    return "/contacts/organizations/{$this->slug}";
+		}
     }
 }

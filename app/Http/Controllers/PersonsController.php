@@ -26,7 +26,7 @@ class PersonsController extends Controller
     {
         $persons = Person::orderBy('id')->get();
 
-        return view('persons.index', compact('persons'));
+        return view('contacts.persons.index', compact('persons'));
     }
 
     /**
@@ -38,7 +38,7 @@ class PersonsController extends Controller
     {
         $persons = Person::where('type_id', '=', 1)->orderBy('id')->get();
 
-        return view('persons.male', compact('persons'));
+        return view('contacts.persons.male', compact('persons'));
     }
 
     /**
@@ -50,7 +50,7 @@ class PersonsController extends Controller
     {
         $persons = Person::where('type_id', '=', 2)->orderBy('id')->get();
 
-        return view('persons.female', compact('persons'));
+        return view('contacts.persons.female', compact('persons'));
     }
 
     /**
@@ -60,7 +60,7 @@ class PersonsController extends Controller
      */
     public function create()
     {
-        return view('persons.create');
+        return view('contacts.persons.create');
     }
 
     /**
@@ -151,7 +151,7 @@ class PersonsController extends Controller
      */
     public function show(Person $person)
     {
-        return view('persons.show', compact('person'));
+        return view('contacts.persons.show', compact('person'));
     }
 
     /**
