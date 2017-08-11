@@ -82,7 +82,7 @@
                 <nav class="tabs is-boxed is-fullwidth">
                     <div class="container">
                         <ul>
-                            <li class="{{ set_active('files/details*') }}"><a href="/files/details">File Details</a></li>
+                            <li class="{{ set_active('files/*', array('files/leads','files/pre','files/litigation','files/closed','files/create')) }}"><a href="/files">File Details</a></li>
                             <li class="{{ set_active('files/leads') }}"><a href="/files/leads">Leads</a></li>
                             <li class="{{ set_active('files/pre') }}"><a href="/files/pre">Pre-Litigation</a></li>
                             <li class="{{ set_active('files/litigation') }}"><a href="/files/litigation">Litigation</a></li>
@@ -107,11 +107,23 @@
 
             
         </div>
+        <!-- Hero footer: for files -->
         <nav class="navbar has-shadow{{ set_shown('files*') }}">
             <div class="navbar-brand container">
-                <a class="navbar-item is-tab " href="/">Matters</a>
-                <a class="navbar-item is-tab " href="/">Clients</a>
-                <a class="navbar-item is-tab " href="/">Intake Forms</a>
+                <a class="navbar-item is-tab{{ set_active('*/matters') }}" href="/">Matters</a>
+                <a class="navbar-item is-tab{{ set_active('*/clients') }}" href="/">Clients</a>
+                <a class="navbar-item is-tab{{ set_active('*/forms') }}" href="/">Intake Forms</a>
+            </div>
+        </nav>
+
+        <!-- Hero footer: for files -->
+        <nav class="navbar has-shadow{{ set_shown('contacts/organizations*') }}">
+            <div class="navbar-brand container">
+                @php
+                  $except = array();
+                @endphp
+                <a class="navbar-item is-tab{{ set_active('contacts/organizations/*', array('contacts/organizations/create')) }}" href="/contacts/organizations">Organization Details</a>
+                <a class="navbar-item is-tab{{ set_active('contacts/organizations/create') }}" href="/contacts/organizations/create">New Organization</a>
             </div>
         </nav>
     </section>

@@ -99,7 +99,7 @@ class OrganizationsController extends Controller
     {
         $this->validate($request, [
                 'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
-                'type_id' => 'required|min:1|max:1|integer',
+                'type_id' => 'required|min:1|integer',
                 'address' => 'required|min:5|max:255',
                 'city' => 'required|min:5|max:255',
                 'state' => 'required|min:2|max:2|alpha',
@@ -116,7 +116,7 @@ class OrganizationsController extends Controller
 
         $remove = array(".", "_", "/", "\'", "(", ")");
 
-        $contact = Person::create([
+        $contact = Organization::create([
                 'display_name' => $request->display_name,
                 'slug' => str_replace($remove, "", str_replace(" ", "-", strtolower($request->display_name))),
                 'type_id' => $request->type_id,
