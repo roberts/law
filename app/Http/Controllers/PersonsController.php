@@ -74,7 +74,7 @@ class PersonsController extends Controller
         $this->validate($request, [
                 'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
                 'email' => 'nullable|email|min:5|max:255',
-                'type_id' => 'required|min:1|max:1|integer',
+                'type_id' => 'required|min:1|integer',
                 'address' => 'required|min:5|max:255',
                 'city' => 'required|min:5|max:255',
                 'state' => 'required|min:2|max:2|alpha',

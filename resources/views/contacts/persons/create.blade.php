@@ -169,7 +169,6 @@
 			</div>
 
 			
-
 			<div class="field is-horizontal">
 			  <div class="field-label is-normal">
 			  	<label class="label">Optional Fields</label>
