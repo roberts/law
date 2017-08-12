@@ -47,7 +47,7 @@ return array(
     'CreateCasesTable' => $baseDir . '/database/migrations/2017_06_10_205026_create_cases_table.php',
     'CreateContactsTable' => $baseDir . '/database/migrations/2017_06_10_203210_create_contacts_table.php',
     'CreateFileStatusTable' => $baseDir . '/database/migrations/2017_06_10_214252_create_file_status_table.php',
-    'CreateFileTypesTable' => $baseDir . '/database/migrations/2017_08_12_015722_create_file_types_table.php',
+    'CreateFileTypesTable' => $baseDir . '/database/migrations/2017_06_10_203722_create_file_types_table.php',
     'CreateFileablesTable' => $baseDir . '/database/migrations/2017_08_09_233738_create_fileables_table.php',
     'CreateFilesTable' => $baseDir . '/database/migrations/2017_06_10_214234_create_files_table.php',
     'CreateInjuriesTable' => $baseDir . '/database/migrations/2017_07_21_184015_create_injuries_table.php',

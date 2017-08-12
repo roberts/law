@@ -17,6 +17,7 @@ class ContactsTableSeeder extends Seeder
             'slug'          => 'rlo',
             'display_name'  => 'Roberts Law Office, PLLC',
             'type_id'       => 3,
+            'counsel'       => 1,
             'address'       => '301 E Main Street, Suite 1000-C',
             'city'          => 'Lexington',
             'state'         => 'KY',

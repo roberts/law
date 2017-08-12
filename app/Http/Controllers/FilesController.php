@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\Contact;
+use App\FileType;
+use App\Source;
 use Illuminate\Http\Request;
 
 class FilesController extends Controller
@@ -24,7 +27,7 @@ class FilesController extends Controller
      */
     public function index()
     {
-        $files = File::orderBy('id')->get();
+        $files = File::latest()->get();
 
         return view('files.index', compact('files'));
     }
@@ -36,7 +39,7 @@ class FilesController extends Controller
      */
     public function leads()
     {
-        $files = File::orderBy('id')->get();
+        $files = File::latest()->get();
 
         return view('files.leads', compact('files'));
     }
@@ -48,7 +51,7 @@ class FilesController extends Controller
      */
     public function pre()
     {
-        $files = File::orderBy('id')->get();
+        $files = File::latest()->get();
 
         return view('files.pre', compact('files'));
     }
@@ -60,7 +63,7 @@ class FilesController extends Controller
      */
     public function litigation()
     {
-        $files = File::orderBy('id')->get();
+        $files = File::latest()->get();
 
         return view('files.litigation', compact('files'));
     }
@@ -72,7 +75,7 @@ class FilesController extends Controller
      */
     public function closed()
     {
-        $files = File::orderBy('id')->get();
+        $files = File::latest()->get();
 
         return view('files.closed', compact('files'));
     }
@@ -84,7 +87,12 @@ class FilesController extends Controller
      */
     public function create()
     {
-        return view('files.create');
+        $firms = Contact::where('counsel', '=', 1)orderBy('id')->get();
+        $contacts = Contact::latest()->get();
+        $file_types = FileType::latest()->get();
+        $sources = Source::orderBy('id', 'desc')->get();
+
+        return view('files.create', compact('contacts', 'file_types', 'sources'));
     }
 
     /**

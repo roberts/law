@@ -13,7 +13,7 @@ class CreateFileTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('file_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('model')->unique()->index();
             $table->string('title')->unique();

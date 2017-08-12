@@ -25,7 +25,7 @@
           <a href="/contacts/organizations/other">other</a>
         </p>
         @foreach ($organizations as $organization)
-            @if ($organization->id == 1 || $organization->partner == 1)
+            @if ($organization->counsel == 1)
             <a href="{{ $organization->path() }}" class="panel-block is-active">
             @else
             <a href="{{ $organization->path() }}" class="panel-block">

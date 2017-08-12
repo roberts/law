@@ -13,7 +13,7 @@ class FileTypesTableSeeder extends Seeder
     {
         $now = date('Y-m-d H:i:s');
         
-        DB::table('types')->insert([
+        DB::table('file_types')->insert([
             'model'         => 'App\IntakeMask',
             'title'         => 'Dust Mask',
             'created_at'    => $now,
