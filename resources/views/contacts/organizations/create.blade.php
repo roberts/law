@@ -47,6 +47,26 @@
 			  </div>
 			</div>
 
+			<div id="counsel_field" class="field is-horizontal" style="display:none">
+			  <div class="field-label">
+			  	<label class="label">Can Represent Clients?</label>
+			  </div>
+			  <div class="field-body">
+			    <div class="field is-narrow">
+			      <div class="control">
+			        <label class="radio">
+			          <input type="radio" id="counsel" name="counsel" value="1">
+			          Yes
+			        </label>
+			        <label class="radio">
+			          <input type="radio" id="counsel" name="counsel" value="0" checked>
+			          No
+			        </label>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
 			<div class="field is-horizontal">
 			  <div class="field-label is-normal">
 			  </div>
@@ -336,4 +356,19 @@
     </div>
   </section>
   <div style="height:250px;"></div>
+@endsection
+
+@section('javascript')
+	<script type="text/javascript">
+		window.onload=function() {
+		  document.getElementById("type_id").onchange=function() {
+		    var type_id = this.value;
+		    if (type_id=="3") {
+		        document.getElementById('counsel_field').style.display = 'flex';
+			} else {
+			    document.getElementById('counsel_field').style.display = 'none';
+			}
+		  } 
+		}
+    </script>
 @endsection

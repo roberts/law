@@ -6,6 +6,8 @@ use App\File;
 use App\Contact;
 use App\FileType;
 use App\Source;
+use App\Fileable;
+use App\IntakeMask;
 use Illuminate\Http\Request;
 
 class FilesController extends Controller
@@ -87,12 +89,13 @@ class FilesController extends Controller
      */
     public function create()
     {
-        $firms = Contact::where('counsel', '=', 1)orderBy('id')->get();
+        $firms = Contact::where('counsel', '=', 1)->orderBy('id')->get();
         $contacts = Contact::latest()->get();
         $file_types = FileType::latest()->get();
         $sources = Source::orderBy('id', 'desc')->get();
+        $referralfirms = Contact::where('type_id', '=', 3)->orderBy('id')->get();
 
-        return view('files.create', compact('contacts', 'file_types', 'sources'));
+        return view('files.create', compact('firms', 'contacts', 'file_types', 'sources', 'referralfirms'));
     }
 
     /**
@@ -103,18 +106,44 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['display_name' => 'required|min:8|unique:authors|max:255']);
-        $this->validate($request, ['last_name' => 'required|min:3|max:255']);
-        $this->validate($request, ['slug' => 'required|unique:authors|max:255']);
+        $this->validate($request, [
+                'counsel' => 'required|min:1|integer',
+                'file_type_id' => 'required|min:1|integer',
+                'source_id' => 'required|min:1|integer',
+                'referral_id' => 'nullable|min:1|integer'
+            ]);
 
-        $quoteauthor = QuoteAuthor::create([
-            'slug' => request('slug'),
-            'display_name' => request('display_name'),
-            'last_name' => request('last_name'),
-            'created_by' => auth()->id()
-        ]);
+        $file = File::create([
+                'file_number' => 'test-number-2',
+                'counsel' => $request->counsel,
+                'file_type_id' => $request->file_type_id,
+                'source_id' => $request->source_id,
+                'referral_id' => $request->referral_id ?: null,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
 
-        session()->flash('message', 'Thanks for adding an author');
+        $newfile = File::latest()->first();
+
+        if ($request->file_type_id  == 1) {
+            $maskintake = IntakeMask::create([
+                'client_id' => $request->client_id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+            $intake = IntakeMask::latest()->first();
+            $fileable_type = 'App\IntakeMask';
+        }
+
+        $fileble = Fileable::create([
+                'file_id' => $newfile->id,
+                'fileable_type' => $fileable_type,
+                'fileable_id' => $intake->id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+
+        session()->flash('message', 'Thanks for adding a File');
 
         return back();
     }
