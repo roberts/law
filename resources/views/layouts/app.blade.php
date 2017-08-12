@@ -113,20 +113,26 @@
                 <a class="navbar-item is-tab{{ set_active('*/matters') }}" href="/">Matters</a>
                 <a class="navbar-item is-tab{{ set_active('*/clients') }}" href="/">Clients</a>
                 <a class="navbar-item is-tab{{ set_active('*/forms') }}" href="/">Intake Forms</a>
-                
+
             </div>
         </nav>
 
-        <!-- Hero footer: for files -->
+        <!-- Hero footer: for contacts/organizations -->
         <nav class="navbar has-shadow{{ set_shown('contacts/organizations*') }}">
             <div class="navbar-brand container">
-                @php
-                  $except = array();
-                @endphp
                 <a class="navbar-item is-tab{{ set_active('contacts/organizations/*', array('contacts/organizations/create')) }}" href="/contacts/organizations">Organization Details</a>
                 <a class="navbar-item is-tab{{ set_active('contacts/organizations/create') }}" href="/contacts/organizations/create">New Organization</a>
             </div>
         </nav>
+
+        <!-- Hero footer: for contacts/persons -->
+        <nav class="navbar has-shadow{{ set_shown('contacts/persons*') }}">
+            <div class="navbar-brand container">
+                <a class="navbar-item is-tab{{ set_active('contacts/persons/*', array('contacts/persons/create')) }}" href="/contacts/persons">Person Details</a>
+                <a class="navbar-item is-tab{{ set_active('contacts/persons/create') }}" href="/contacts/persons/create">New Person</a>
+            </div>
+        </nav>
+
     </section>
     @endif
 
