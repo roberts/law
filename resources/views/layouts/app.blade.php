@@ -110,9 +110,9 @@
         <!-- Hero footer: for files -->
         <nav class="navbar has-shadow{{ set_shown('files*') }}">
             <div class="navbar-brand container">
-                <a class="navbar-item is-tab{{ set_active('*/matters') }}" href="/">Matters</a>
-                <a class="navbar-item is-tab{{ set_active('*/clients') }}" href="/">Clients</a>
-                <a class="navbar-item is-tab{{ set_active('*/forms') }}" href="/">Intake Forms</a>
+                <a class="navbar-item is-tab{{ set_active('*/matters') }}" href="#Matters">Matters</a>
+                <a class="navbar-item is-tab{{ set_active('*/clients') }}" href="#Clients">Clients</a>
+                <a class="navbar-item is-tab{{ set_active('*/forms') }}" href="#Intakes">Intake Forms</a>
 
             </div>
         </nav>
