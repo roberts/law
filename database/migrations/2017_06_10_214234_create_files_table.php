@@ -35,6 +35,7 @@ class CreateFilesTable extends Migration
 
         Schema::table('files', function($table) {
             $table->foreign('counsel')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('file_type_id')->references('id')->on('file_types')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('source_id')->references('id')->on('sources')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('referral_id')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('case_id')->references('id')->on('cases')->onDelete('restrict')->onUpdate('cascade');
