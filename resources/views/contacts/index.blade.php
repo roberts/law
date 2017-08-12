@@ -24,24 +24,21 @@
               <a href="/contacts/persons/male">male</a>
               <a href="/contacts/persons/female">female</a>
             </p>
-            @php
-                $firstElement = true;
-            @endphp
             @foreach ($persons as $person)
-            @if ($person->user_id)
-            <a href="{{ $person->path() }}" class="panel-block current is-active">
-            @else
-            <a href="{{ $person->path() }}" class="panel-block">
-            @endif
-              <span class="panel-icon">
-                @if ($person->type_id == 1)
-                <i class="fa fa-male"></i>
+                @if ($person->user_id)
+                <a href="{{ $person->path() }}" class="panel-block current is-active">
                 @else
-                <i class="fa fa-female"></i>
+                <a href="{{ $person->path() }}" class="panel-block">
                 @endif
-              </span>
-              {{ $person->display_name }}
-            </a>
+                  <span class="panel-icon">
+                    @if ($person->type_id == 1)
+                      <i class="fa fa-male"></i>
+                    @else
+                      <i class="fa fa-female"></i>
+                    @endif
+                  </span>
+                  {{ $person->display_name }}
+                </a>
             @endforeach
             <a href="/contacts/persons/create" class="panel-block">
               <button class="button is-primary is-outlined is-fullwidth">add new person</button>

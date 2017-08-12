@@ -22,9 +22,6 @@
           <a href="/contacts/persons/male">male</a>
           <a href="/contacts/persons/female">female</a>
         </p>
-        @php
-            $firstElement = true;
-        @endphp
         @foreach ($persons as $person)
             @if ($person->user_id)
             <a href="{{ $person->path() }}" class="panel-block current is-active">

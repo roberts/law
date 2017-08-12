@@ -1,15 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-  <section class="hero is-fullheight">
-    <div class="hero-body columns is-mobile is-centered">
-      <div class="column is-mobile is-half-tablet is-one-third-desktop">
-      <article class="message is-large">
-        <div class="message-body">
-          <p>Under Construction</p>
+  <section class="section">
+    <div style="height:150px;"></div>
+    <div class="container">
+      <h1 class="title">Files</h1>
+      <h2 class="subtitle">List of files/matters in RLO Portal</h2>
+      <hr>
+      <nav id="persons" class="panel">
+        <p class="panel-heading">Files</p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input class="input is-small" type="text" placeholder="search">
+            <span class="icon is-small is-left">
+              <i class="fa fa-search"></i>
+            </span>
+          </p>
         </div>
-        </article>
-      </div>
+        <p class="panel-tabs">
+          <a href="/files" class="is-active">all</a>
+          <a href="/files/leads">leads</a>
+          <a href="/files/pre-litigation">pre-litigation</a>
+          <a href="/files/litigation">litigation</a>
+          <a href="/files/closed">closed</a>
+        </p>
+        @foreach ($files as $file)
+          <a href="{{ $file->path() }}" class="panel-block">
+            <div class="column is-half" style="padding:0;">
+              <span class="panel-icon" style="vertical-align: 15%;">
+                <i class="fa fa-archive"></i>
+              </span>{{ $file->file_number }}
+            </div>
+            <div class="column is-half" style="padding:0;">
+              Dismissed
+            </div>
+          </a>
+        @endforeach
+        <a href="/files/create" class="panel-block">
+          <button class="button is-primary is-outlined is-fullwidth">add new file</button>
+        </a>
+      </nav>
     </div>
   </section>
+  <div style="height:250px;"></div>
 @endsection

@@ -136,7 +136,11 @@ class OrganizationsController extends Controller
                 'updated_by' => auth()->id()
             ]);
 
-        return back();
+        session()->flash('message', 'Thanks for adding a Organization');
+
+        $neworg = Organization::latest()->first();
+
+        return redirect($neworg->path());
     }
 
     /**

@@ -116,7 +116,7 @@ class FilesController extends Controller
 
         $day = Carbon::now('America/Kentucky/Louisville');
         $number = File::whereMonth('created_at', Carbon::parse($day)->month)->count();
-        $file_number = $day->year .'-'. str_pad($day->month, 2, '0', STR_PAD_LEFT) .'-'. str_pad($number, 4, '0', STR_PAD_LEFT);
+        $file_number = $day->year .'-'. str_pad($day->month, 2, '0', STR_PAD_LEFT) .'-'. str_pad($number, 5, '0', STR_PAD_LEFT);
 
         $file = File::create([
                 'file_number' => $file_number,
@@ -150,7 +150,7 @@ class FilesController extends Controller
 
         session()->flash('message', 'Thanks for adding a File');
 
-        return back();
+        return redirect($newfile->path());
     }
 
     /**

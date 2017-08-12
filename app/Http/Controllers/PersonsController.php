@@ -140,7 +140,11 @@ class PersonsController extends Controller
                 'updated_by' => auth()->id()
             ]);
 
-        return back();
+        session()->flash('message', 'Thanks for adding a Person');
+
+        $newperson = Person::latest()->first();
+
+        return redirect($newperson->path());
     }
 
     /**
