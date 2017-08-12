@@ -104,7 +104,7 @@ class OrganizationsController extends Controller
                 'city' => 'required|min:5|max:255',
                 'state' => 'required|min:2|max:2|alpha',
                 'zip' => 'required|min:5|max:99999|integer',
-                'corp_name' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_|\,)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'corp_name' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9(),.-])+))*(\s)*$/'],
                 'dba' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
                 'branch' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
                 'ein' => 'nullable|min:10|max:10|regex:/^[0-9]\d{1}-\d{7}$/',
