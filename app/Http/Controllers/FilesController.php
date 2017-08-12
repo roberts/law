@@ -8,6 +8,7 @@ use App\FileType;
 use App\Source;
 use App\Fileable;
 use App\IntakeMask;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FilesController extends Controller
@@ -113,8 +114,12 @@ class FilesController extends Controller
                 'referral_id' => 'nullable|min:1|integer'
             ]);
 
+        $day = Carbon::now('America/Kentucky/Louisville');
+        $number = File::whereMonth('created_at', Carbon::parse($day)->month)->count();
+        $file_number = $day->year .'-'. str_pad($day->month, 2, '0', STR_PAD_LEFT) .'-'. str_pad($number, 4, '0', STR_PAD_LEFT);
+
         $file = File::create([
-                'file_number' => 'test-number-2',
+                'file_number' => $file_number,
                 'counsel' => $request->counsel,
                 'file_type_id' => $request->file_type_id,
                 'source_id' => $request->source_id,
