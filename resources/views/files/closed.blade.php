@@ -18,11 +18,11 @@
           </p>
         </div>
         <p class="panel-tabs">
-          <a href="/files" class="is-active">all</a>
-          <a href="/files/leads">leads</a>
-          <a href="/files/pre-litigation">pre-litigation</a>
-          <a href="/files/litigation">litigation</a>
-          <a href="/files/closed">closed</a>
+          <a href="/files" class="{{ set_active('files') }}">all</a>
+          <a href="/files/leads" class="{{ set_active('files/leads') }}">leads</a>
+          <a href="/files/pre" class="{{ set_active('files/pre') }}">pre-litigation</a>
+          <a href="/files/litigation" class="{{ set_active('files/litigation') }}">litigation</a>
+          <a href="/files/closed" class="{{ set_active('files/closed') }}">closed</a>
         </p>
         @foreach ($files as $file)
           <a href="{{ $file->path() }}" class="panel-block">
