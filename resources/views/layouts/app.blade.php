@@ -113,6 +113,7 @@
                 <a class="navbar-item is-tab{{ set_active('*/matters') }}" href="/">Matters</a>
                 <a class="navbar-item is-tab{{ set_active('*/clients') }}" href="/">Clients</a>
                 <a class="navbar-item is-tab{{ set_active('*/forms') }}" href="/">Intake Forms</a>
+                
             </div>
         </nav>
 
