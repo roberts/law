@@ -43,6 +43,12 @@ class File extends Model
         return "/files/{$this->file_number}";
     }
 
-
+    /**
+     * The statuses that belong to the file.
+     */
+    public function statuses()
+    {
+        return $this->belongsToMany('App\Status')->whereNull('file_status.deleted_at')->withPivot('created_by', 'created_at', 'deleted_at');
+    }
 
 }

@@ -149,6 +149,8 @@ class FilesController extends Controller
                 'updated_by' => auth()->id()
             ]);
 
+        $newfile->statuses()->attach(5, ['created_by' => auth()->id()]);
+
         session()->flash('message', 'Thanks for adding a File');
 
         return redirect($newfile->path());
