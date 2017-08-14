@@ -64,8 +64,7 @@ class File extends Model
      */
     public function clients()
     {
-        $intakedb = 'intake_masks';
-        return $this->belongsToMany('App\Contact', $intakedb, 'file_id', 'client_id');
+        return $this->belongsToMany('App\Contact', $this->file_type->db_table, 'file_id', 'client_id');
     }
 
     /**
