@@ -31,12 +31,12 @@
                 <i class="fa fa-archive"></i>
               </span>{{ $file->file_number }}
             </div>
-            <div class="column is-one-third" style="padding:0;">
+            <div class="column is-one-third has-text-centered" style="padding:0;">
               @foreach ($file->clients as $client)
                   {{ $client->display_name }}
               @endforeach
             </div>
-            <div class="column is-one-third" style="padding:0;">
+            <div class="column is-one-third has-text-right" style="padding:0;">
               @foreach ($file->latestStatus as $status)
                   {{ $status->title }}
               @endforeach
