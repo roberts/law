@@ -100,7 +100,7 @@ class PersonsController extends Controller
                 'dl_state' => 'nullable|min:2|max:2|alpha'
             ]);
 
-        $remove = array(".", "_", "/", "\'", "(", ")", ",");
+        $remove = array(".", "_", "/", "'", "(", ")", ",");
         if ($request->ssn) {
             $request->merge(array('ssn' => bcrypt($request->ssn)));
         }
