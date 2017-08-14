@@ -40,7 +40,7 @@ class File extends Model
      */
     public function path()
     {
-        return "/files/{$this->file_type->slug}/{$this->file_number}";
+        return "/files/{$this->filetype->slug}/{$this->file_number}";
     }
 
     /**
@@ -56,7 +56,7 @@ class File extends Model
      */
     public function filetype()
     {
-        return $this->belongsTo('App\FileType');
+        return $this->belongsTo('App\FileType', 'file_type_id');
     }
 
     /**
@@ -64,7 +64,7 @@ class File extends Model
      */
     public function clients()
     {
-        return $this->belongsToMany('App\Contact', $this->file_type->db_table, 'file_id', 'client_id');
+        return $this->belongsToMany('App\Contact', $this->filetype->db_table, 'file_id', 'client_id');
     }
 
     /**

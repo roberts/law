@@ -38,7 +38,7 @@ class CreateFilesTable extends Migration
             $table->foreign('file_type_id')->references('id')->on('file_types')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('source_id')->references('id')->on('sources')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('referral_id')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('case_id')->references('id')->on('litigations')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('litigation_id')->references('id')->on('litigations')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
         });
@@ -55,7 +55,7 @@ class CreateFilesTable extends Migration
             $table->dropForeign(['counsel']);
             $table->dropForeign(['source_id']);
             $table->dropForeign(['referral_id']);
-            $table->dropForeign(['case_id']);
+            $table->dropForeign(['litigation_id']);
             $table->dropForeign(['created_by']);
             $table->dropForeign(['updated_by']);
         });

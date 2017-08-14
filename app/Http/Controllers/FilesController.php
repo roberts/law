@@ -7,6 +7,9 @@ use App\FileType;
 use App\Contact;
 use App\Source;
 use App\IntakeMask;
+use App\IntakeDui;
+use App\IntakeWreck;
+use App\IntakeFall;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -139,7 +142,7 @@ class FilesController extends Controller
         $newfile = File::latest()->first();
 
         if ($request->file_type_id  == 1) {
-            $maskintake = IntakeMask::create([
+            $intake = IntakeMask::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
                 'created_by' => auth()->id(),
@@ -147,7 +150,7 @@ class FilesController extends Controller
             ]);
         }
         if ($request->file_type_id  == 2) {
-            $maskintake = IntakeDui::create([
+            $intake = IntakeDui::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
                 'created_by' => auth()->id(),
@@ -155,7 +158,7 @@ class FilesController extends Controller
             ]);
         }
         if ($request->file_type_id  == 3) {
-            $maskintake = IntakeWreck::create([
+            $intake = IntakeWreck::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
                 'created_by' => auth()->id(),
@@ -163,7 +166,7 @@ class FilesController extends Controller
             ]);
         }
         if ($request->file_type_id  == 4) {
-            $maskintake = IntakeFall::create([
+            $intake = IntakeFall::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
                 'created_by' => auth()->id(),
