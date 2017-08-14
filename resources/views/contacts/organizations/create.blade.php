@@ -36,7 +36,7 @@
 						<option value="6">Sole Proprietor</option>
 						<option value="7">Partnership</option>
 						<option value="8">Not-for-Profit</option>
-						<option value="8">Government Agency</option>
+						<option value="9">Government Agency</option>
 			          </select>
 			        </div>
 			        <div class="icon is-small is-left">
