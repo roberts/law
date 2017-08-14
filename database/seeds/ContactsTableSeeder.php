@@ -29,8 +29,8 @@ class ContactsTableSeeder extends Seeder
             'dba'           => 'Roberts Law Office',
             'created_by'    => 2,
             'updated_by'    => 2,
-            'created_at'    => $now,
-            'updated_at'    => $now,
+            'created_at'    => '2017-08-14 14:30:00',
+            'updated_at'    => '2017-08-14 14:30:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -55,8 +55,8 @@ class ContactsTableSeeder extends Seeder
             'birth_date'    => '1985-01-18',
             'created_by'    => 2,
             'updated_by'    => 2,
-            'created_at'    => $now,
-            'updated_at'    => $now,
+            'created_at'    => '2017-08-14 14:30:30',
+            'updated_at'    => '2017-08-14 14:30:30',
         ]);
         
         DB::table('contacts')->insert([
@@ -80,8 +80,28 @@ class ContactsTableSeeder extends Seeder
             'birth_date'    => '1983-05-20',
             'created_by'    => 2,
             'updated_by'    => 2,
-            'created_at'    => $now,
-            'updated_at'    => $now,
+            'created_at'    => '2017-08-14 14:30:45',
+            'updated_at'    => '2017-08-14 14:30:45',
+        ]);
+
+        DB::table('contacts')->insert([
+            'slug'          => 'toddwburrislaw',
+            'display_name'  => 'Law Office of Todd W. Burris',
+            'type_id'       => 3,
+            'counsel'       => 1,
+            'address'       => '301 E Main Street, Suite 1000-A',
+            'city'          => 'Lexington',
+            'state'         => 'KY',
+            'zip'           => '40507',
+            'work_phone'    => '859-252-2222',
+            'fax'           => '859-757-2457',
+            'website'       => 'toddwburrislaw.com',
+            'corp_name'     => 'Law Office of Todd W. Burris, PLLC',
+            'dba'           => 'Law Office of Todd W. Burris',
+            'created_by'    => 1,
+            'updated_by'    => 1,
+            'created_at'    => '2017-08-14 14:45:00',
+            'updated_at'    => '2017-08-14 14:45:00',
         ]);
         
        
