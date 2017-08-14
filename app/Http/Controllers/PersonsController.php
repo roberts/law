@@ -101,6 +101,7 @@ class PersonsController extends Controller
             ]);
 
         $remove = array(".", "_", "/", "'", "(", ")", ",");
+        
         if ($request->ssn) {
             $request->merge(array('ssn' => bcrypt($request->ssn)));
         }

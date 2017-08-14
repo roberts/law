@@ -114,7 +114,7 @@ class OrganizationsController extends Controller
                 'fax' => 'nullable|min:12|max:12|regex:/^[2-9]\d{2}-\d{3}-\d{4}$/'
             ]);
 
-        $remove = array(".", "_", "/", "'", "(", ")", ",");
+        $remove = array(".", "_", "/", "'", "(", ")", ","); 
 
         $contact = Organization::create([
                 'display_name' => $request->display_name,
