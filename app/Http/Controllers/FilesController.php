@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\File;
-use App\Contact;
 use App\FileType;
+use App\Contact;
 use App\Source;
 use App\IntakeMask;
 use Carbon\Carbon;
@@ -160,7 +160,7 @@ class FilesController extends Controller
      * @param  \App\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function show(File $file)
+    public function show(FileType $filetype, File $file)
     {
         return view('files.show', compact('file'));
     }

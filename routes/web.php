@@ -18,7 +18,6 @@ Auth::routes();
 Route::get('desk', function () { return view('desk'); })->middleware('auth');
 Route::get('conference', function () { return view('conference'); })->middleware('auth');
 Route::get('accounting', function () { return view('accounting'); })->middleware('auth');
-Route::get('/@{user}', 'UsersController@show');
 
 Route::get('files', 'FilesController@index');
 Route::group(['prefix' => 'files'], function () {
@@ -28,7 +27,12 @@ Route::group(['prefix' => 'files'], function () {
     Route::get('closed', 'FilesController@closed');
     Route::get('create', 'FilesController@create');
     Route::post('create', 'FilesController@store');
-    Route::get('{file}', 'FilesController@show');
+    Route::get('{filetype}', 'FileTypesController@show');
+    Route::get('{filetype}/leads', 'FilesController@leads');
+    Route::get('{filetype}/pre', 'FilesController@pre');
+    Route::get('{filetype}/litigation', 'FilesController@litigation');
+    Route::get('{filetype}/closed', 'FilesController@closed');
+    Route::get('{filetype}/{file}', 'FilesController@show');
 });
 
 Route::get('contacts', 'ContactsController@index');

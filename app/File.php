@@ -40,7 +40,7 @@ class File extends Model
      */
     public function path()
     {
-        return "/files/{$this->file_number}";
+        return "/files/{$this->file_type->slug}/{$this->file_number}";
     }
 
     /**
