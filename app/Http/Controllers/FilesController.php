@@ -146,6 +146,30 @@ class FilesController extends Controller
                 'updated_by' => auth()->id()
             ]);
         }
+        if ($request->file_type_id  == 2) {
+            $maskintake = IntakeDui::create([
+                'client_id' => $request->client_id,
+                'file_id' => $newfile->id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+        }
+        if ($request->file_type_id  == 3) {
+            $maskintake = IntakeWreck::create([
+                'client_id' => $request->client_id,
+                'file_id' => $newfile->id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+        }
+        if ($request->file_type_id  == 4) {
+            $maskintake = IntakeFall::create([
+                'client_id' => $request->client_id,
+                'file_id' => $newfile->id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+        }
 
         $newfile->statuses()->attach(5, ['created_by' => auth()->id()]);
 

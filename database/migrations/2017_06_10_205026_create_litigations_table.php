@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCasesTable extends Migration
+class CreateLitigationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cases', function (Blueprint $table) { // Also called Litigation
+        Schema::create('litigations', function (Blueprint $table) { // Also called Litigation
             $table->increments('id');
             $table->string('case_number')->index();
             // Can be composed of multiple matters (files)
@@ -25,7 +25,7 @@ class CreateCasesTable extends Migration
             $table->softDeletes();
         });
 
-        Schema::table('cases', function($table) {
+        Schema::table('litigations', function($table) {
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
         });
@@ -38,13 +38,13 @@ class CreateCasesTable extends Migration
      */
     public function down()
     {
-        Schema::table('cases', function ($table) {
+        Schema::table('litigations', function ($table) {
             $table->dropForeign(['created_by']);
             $table->dropForeign(['updated_by']);
         });
 
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('cases');
+        Schema::dropIfExists('litigations');
         Schema::enableForeignKeyConstraints();
     }
 }

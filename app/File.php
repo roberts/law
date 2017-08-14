@@ -54,7 +54,7 @@ class File extends Model
     /**
      * Get the file type.
      */
-    public function file_type()
+    public function filetype()
     {
         return $this->belongsTo('App\FileType');
     }

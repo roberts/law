@@ -2,21 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\File;
+use App\Litigation;
 use Illuminate\Http\Request;
 
-class CasesController extends Controller
+class LitigationController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     /**
      * Display a listing of the resource.
      *
@@ -51,10 +41,10 @@ class CasesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Case  $case
+     * @param  \App\Litigation  $litigation
      * @return \Illuminate\Http\Response
      */
-    public function show(Case $case)
+    public function show(Litigation $litigation)
     {
         //
     }
@@ -62,10 +52,10 @@ class CasesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Case  $case
+     * @param  \App\Litigation  $litigation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Case $case)
+    public function edit(Litigation $litigation)
     {
         //
     }
@@ -74,10 +64,10 @@ class CasesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Case  $case
+     * @param  \App\Litigation  $litigation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Case $case)
+    public function update(Request $request, Litigation $litigation)
     {
         //
     }
@@ -85,10 +75,10 @@ class CasesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Case  $case
+     * @param  \App\Litigation  $litigation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Case $case)
+    public function destroy(Litigation $litigation)
     {
         //
     }
