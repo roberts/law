@@ -32,7 +32,9 @@
               </span>{{ $file->file_number }}
             </div>
             <div class="column is-half" style="padding:0;">
-              Litigation
+              @foreach ($file->latestStatus as $status)
+                  {{ $status->title }}
+              @endforeach
             </div>
           </a>
         @endforeach

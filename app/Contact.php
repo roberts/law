@@ -46,4 +46,13 @@ class Contact extends Model
 		    return "/contacts/organizations/{$this->slug}";
 		}
     }
+
+    /**
+     * Get the files that the contact referred.
+     */
+    public function referredfiles()
+    {
+        return $this->hasMany('App\File', 'referral_id');
+    }
+
 }

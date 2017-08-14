@@ -15,8 +15,10 @@ class CreateFileTypesTable extends Migration
     {
         Schema::create('file_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('model')->unique()->index();
+            $table->string('slug')->unique()->index();
             $table->string('title')->unique();
+            $table->string('model')->unique();
+            $table->string('db_table')->unique();
             $table->timestamps();
             $table->softDeletes();
         });

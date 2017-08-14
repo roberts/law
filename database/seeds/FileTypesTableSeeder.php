@@ -14,8 +14,10 @@ class FileTypesTableSeeder extends Seeder
         $now = date('Y-m-d H:i:s');
         
         DB::table('file_types')->insert([
-            'model'         => 'App\IntakeMask',
+            'title'         => 'dust-mask',
             'title'         => 'Dust Mask',
+            'model'         => 'App\IntakeMask',
+            'db_table'      => 'intake_masks',
             'created_at'    => $now,
             'updated_at'    => $now,
         ]);

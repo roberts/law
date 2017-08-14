@@ -64,4 +64,13 @@ class Organization extends Model
     {
         return "/contacts/organizations/{$this->slug}";
     }
+
+    /**
+     * Get the files where the organization is the counsel.
+     */
+    public function files()
+    {
+        return $this->hasMany('App\File', 'counsel');
+    }
+
 }

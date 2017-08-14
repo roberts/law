@@ -26,13 +26,20 @@
         </p>
         @foreach ($files as $file)
           <a href="{{ $file->path() }}" class="panel-block">
-            <div class="column is-half" style="padding:0;">
+            <div class="column is-one-third" style="padding:0;">
               <span class="panel-icon" style="vertical-align: 15%;">
                 <i class="fa fa-archive"></i>
               </span>{{ $file->file_number }}
             </div>
-            <div class="column is-half" style="padding:0;">
-              Lead
+            <div class="column is-one-third" style="padding:0;">
+              @foreach ($file->clients as $client)
+                  {{ $client->display_name }}
+              @endforeach
+            </div>
+            <div class="column is-one-third" style="padding:0;">
+              @foreach ($file->latestStatus as $status)
+                  {{ $status->title }}
+              @endforeach
             </div>
           </a>
         @endforeach

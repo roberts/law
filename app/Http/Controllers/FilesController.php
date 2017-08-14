@@ -6,7 +6,6 @@ use App\File;
 use App\Contact;
 use App\FileType;
 use App\Source;
-use App\Fileable;
 use App\IntakeMask;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -30,7 +29,7 @@ class FilesController extends Controller
      */
     public function index()
     {
-        $files = File::latest()->get();
+        $files = File::with('latestStatus')->latest()->get();
 
         return view('files.index', compact('files'));
     }
@@ -42,7 +41,9 @@ class FilesController extends Controller
      */
     public function leads()
     {
-        $files = File::latest()->get();
+        $files = File::with('latestStatus')->whereHas('latestStatus', function($q){
+                        $q->where('parent', '=', 1);
+                      })->latest()->get();
 
         return view('files.leads', compact('files'));
     }
@@ -54,7 +55,9 @@ class FilesController extends Controller
      */
     public function pre()
     {
-        $files = File::latest()->get();
+        $files = File::with('latestStatus')->whereHas('latestStatus', function($q){
+                        $q->where('parent', '=', 2);
+                      })->latest()->get();
 
         return view('files.pre', compact('files'));
     }
@@ -66,7 +69,9 @@ class FilesController extends Controller
      */
     public function litigation()
     {
-        $files = File::latest()->get();
+        $files = File::with('latestStatus')->whereHas('latestStatus', function($q){
+                        $q->where('parent', '=', 3);
+                      })->latest()->get();
 
         return view('files.litigation', compact('files'));
     }
@@ -78,7 +83,9 @@ class FilesController extends Controller
      */
     public function closed()
     {
-        $files = File::latest()->get();
+        $files = File::with('latestStatus')->whereHas('latestStatus', function($q){
+                        $q->where('parent', '=', 4);
+                      })->latest()->get();
 
         return view('files.closed', compact('files'));
     }
@@ -134,20 +141,11 @@ class FilesController extends Controller
         if ($request->file_type_id  == 1) {
             $maskintake = IntakeMask::create([
                 'client_id' => $request->client_id,
-                'created_by' => auth()->id(),
-                'updated_by' => auth()->id()
-            ]);
-            $intake = IntakeMask::latest()->first();
-            $fileable_type = 'App\IntakeMask';
-        }
-
-        $fileble = Fileable::create([
                 'file_id' => $newfile->id,
-                'fileable_type' => $fileable_type,
-                'fileable_id' => $intake->id,
                 'created_by' => auth()->id(),
                 'updated_by' => auth()->id()
             ]);
+        }
 
         $newfile->statuses()->attach(5, ['created_by' => auth()->id()]);
 

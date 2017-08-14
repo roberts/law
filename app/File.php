@@ -44,11 +44,81 @@ class File extends Model
     }
 
     /**
+     * Get the main counsel for the file.
+     */
+    public function counsel()
+    {
+        return $this->belongsTo('App\Organization', 'counsel');
+    }
+
+    /**
+     * Get the file type.
+     */
+    public function file_type()
+    {
+        return $this->belongsTo('App\FileType');
+    }
+
+    /**
+     * The clients that belong to the file.
+     */
+    public function clients()
+    {
+        $intakedb = 'intake_masks';
+        return $this->belongsToMany('App\Contact', $intakedb, 'file_id', 'client_id');
+    }
+
+    /**
      * The statuses that belong to the file.
      */
     public function statuses()
     {
         return $this->belongsToMany('App\Status')->whereNull('file_status.deleted_at')->withPivot('created_by', 'created_at', 'deleted_at');
     }
+    public function latestStatus()
+    {
+      return $this->statuses()->latest();
+    }
+
+    /**
+     * Get the litigation case for the file.
+     */
+    public function litigation()
+    {
+        return $this->belongsTo('App\Case', 'case_id');
+    }
+
+    /**
+     * Get the creator of the file.
+     */
+    public function creator()
+    {
+        return $this->belongsTo('App\User', 'created_by');
+    }
+
+    /**
+     * Get the creator of the file.
+     */
+    public function latestUpdater()
+    {
+        return $this->belongsTo('App\User', 'updated_by');
+    }
+
+    /**
+     * Get the source of the file.
+     */
+    public function source()
+    {
+        return $this->belongsTo('App\Source');
+    }
+
+    /**
+     * Get the referral contact of the file.
+     */
+    public function referrer()
+    {
+        return $this->belongsTo('App\Contact', 'referral_id');
+    }
+ 
 
 }
