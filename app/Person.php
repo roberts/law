@@ -64,4 +64,24 @@ class Person extends Model
     {
         return "/contacts/persons/{$this->slug}";
     }
+
+    /**
+     * Get the user that is the person.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    /**
+     * The organizations to which the person belongs.
+     */
+    public function organizations()
+    {
+        return $this->belongsToMany('App\Organization', 'organization_members', 'member_id', 'organization_id');
+    }
+    public function primaryOrganization()
+    {
+      return $this->organizations()->first();
+    }
 }

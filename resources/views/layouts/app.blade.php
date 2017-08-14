@@ -49,9 +49,9 @@
                       </div>
                       <div class="dropdown-menu" id="dropdown-menu" role="menu">
                         <div class="dropdown-content">
-                          <a href="#" class="dropdown-item" style="color:#7a7a7a; text-align:left;">View Profile</a>
-                          <a href="#" class="dropdown-item" style="color: #7a7a7a; text-align:left;">View Firm</a>
-                          <a href="#" class="dropdown-item" style="color: #7a7a7a; text-align:left;">View My Notes</a>
+                          <a href="{{{ Auth::user()->details->path() }}}" class="dropdown-item" style="color:#7a7a7a; text-align:left;">Your Profile</a>
+                          <a href="{{{ Auth::user()->details->primaryOrganization()->path() }}}" class="dropdown-item" style="color: #7a7a7a; text-align:left;">Your Firm</a>
+                          <a href="#" class="dropdown-item" style="color: #7a7a7a; text-align:left;">Your Notes</a>
                           <a href="/accounting" class="dropdown-item" style="color: #7a7a7a; text-align:left;">Accounting</a>
                           <hr class="dropdown-divider">
                           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" style="color: #7a7a7a; text-align:left;">Logout</a>

@@ -98,7 +98,7 @@ class OrganizationsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9().,-_\'])+))*(\s)*$/'],
                 'type_id' => 'required|min:1|integer',
                 'address' => 'required|min:5|max:255',
                 'city' => 'required|min:5|max:255',
