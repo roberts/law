@@ -133,7 +133,7 @@ class FilesController extends Controller
 
         $newfile = File::latest()->first();
 
-        if ($request->file_type_id  == 1) {
+        if ($newfile->file_type_id  == 1) {
             $intake = IntakeMask::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
@@ -141,7 +141,7 @@ class FilesController extends Controller
                 'updated_by' => auth()->id()
             ]);
         }
-        if ($request->file_type_id  == 2) {
+        if ($newfile->file_type_id  == 2) {
             $intake = IntakeDui::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
@@ -149,7 +149,7 @@ class FilesController extends Controller
                 'updated_by' => auth()->id()
             ]);
         }
-        if ($request->file_type_id  == 3) {
+        if ($newfile->file_type_id  == 3) {
             $intake = IntakeWreck::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
@@ -157,7 +157,7 @@ class FilesController extends Controller
                 'updated_by' => auth()->id()
             ]);
         }
-        if ($request->file_type_id  == 4) {
+        if ($newfile->file_type_id  == 4) {
             $intake = IntakeFall::create([
                 'client_id' => $request->client_id,
                 'file_id' => $newfile->id,
