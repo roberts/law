@@ -183,7 +183,7 @@ class FilesController extends Controller
     {
         $this->validate($request, [
                 'note' => 'required|min:5|max:2000',
-                'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])
+                'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])]
             ]);
         $note = new App\Note([
                 'note' => $request->note,

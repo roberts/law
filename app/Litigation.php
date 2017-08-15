@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Litigation extends Model
 {
+	
+	
     /**
      * Get all of the notes about the case/litigation.
      */
@@ -13,5 +15,5 @@ class Litigation extends Model
     {
         return $this->morphMany('App\Note', 'notable');
     }
-    
+
 }
