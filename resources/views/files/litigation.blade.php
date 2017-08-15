@@ -37,7 +37,7 @@
               @endforeach
             </div>
             <div class="column is-one-third has-text-right" style="padding:0;">
-                {{ $file->latestStatus->first()->title }}
+                {{ $file->current->status->title }}
             </div>
           </a>
         @endforeach

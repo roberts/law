@@ -74,10 +74,14 @@ class File extends Model
     {
         return $this->belongsToMany('App\Status')->whereNull('file_status.deleted_at')->withPivot('created_by', 'created_at', 'deleted_at');
     }
-    public function latestStatus()
+    
+    // Category model
+    public function current()
     {
-      return $this->statuses()->latest();
+      return $this->hasOne('App\CurrentStatus');
     }
+
+    
 
     /**
      * Get the litigation case for the file.
