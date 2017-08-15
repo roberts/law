@@ -44,9 +44,7 @@ class FilesController extends Controller
      */
     public function leads()
     {
-        $files = File::with('current.status')->whereHas('current.status', function($q){
-                        $q->where('parent', '=', 1);
-                      })->orderBy('updated_at', 'DESC')->get();
+        $files = File::with('current.status')->fileleads()->get();
 
         return view('files.leads', compact('files'));
     }
@@ -58,9 +56,7 @@ class FilesController extends Controller
      */
     public function pre()
     {
-        $files = File::with('current.status')->whereHas('current.status', function($q){
-                        $q->latest()->where('parent', '=', 2);
-                      })->orderBy('updated_at', 'DESC')->get();
+        $files = File::with('current.status')->prelitigationfiles()->get();
 
         return view('files.pre', compact('files'));
     }
@@ -72,9 +68,7 @@ class FilesController extends Controller
      */
     public function litigation()
     {
-        $files = File::with('current.status')->first()->whereHas('current.status', function($q){
-                        $q->where('parent', '=', 3);
-                      })->orderBy('updated_at', 'DESC')->get();
+        $files = File::with('current.status')->litigationfiles()->get();
 
         return view('files.litigation', compact('files'));
     }
@@ -86,9 +80,7 @@ class FilesController extends Controller
      */
     public function closed()
     {
-        $files = File::with('current.status')->whereHas('current.status', function($q){
-                        $q->where('parent', '=', 4);
-                      })->orderBy('updated_at', 'DESC')->get();
+        $files = File::with('current.status')->closedfiles()->get();
 
         return view('files.closed', compact('files'));
     }

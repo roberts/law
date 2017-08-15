@@ -81,7 +81,57 @@ class File extends Model
       return $this->hasOne('App\CurrentStatus');
     }
 
+    /**
+     * Scope a query to only include files with current status as a lead.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFileleads($query)
+    {
+        return $query->whereHas('current.status', function($q){
+                        $q->where('parent', '=', 1);
+                      })->orderBy('updated_at', 'DESC');
+    }
     
+    /**
+     * Scope a query to only include files with current status as pre-litigation.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePrelitigationfiles($query)
+    {
+        return $query->whereHas('current.status', function($q){
+                        $q->where('parent', '=', 2);
+                      })->orderBy('updated_at', 'DESC');
+    }
+
+    /**
+     * Scope a query to only include files with current status in Litigation.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeLitigationfiles($query)
+    {
+        return $query->whereHas('current.status', function($q){
+                        $q->where('parent', '=', 3);
+                      })->orderBy('updated_at', 'DESC');
+    }
+
+    /**
+     * Scope a query to only include files with current status in Litigation.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeClosedfiles($query)
+    {
+        return $query->whereHas('current.status', function($q){
+                        $q->where('parent', '=', 4);
+                      })->orderBy('updated_at', 'DESC');
+    }
 
     /**
      * Get the litigation case for the file.
