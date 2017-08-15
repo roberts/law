@@ -98,16 +98,16 @@ class OrganizationsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9().,-_&\'])+))*(\s)*$/'],
+                'display_name' => ['required', 'unique:contacts,display_name', 'min:5', 'max:255', 'regex:/^(\s)*[A-Za-z0-9]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9().,-_&\'])+))*(\s)*$/'],
                 'type_id' => 'required|min:1|integer',
                 'counsel' => 'required|boolean',
                 'address' => 'required|min:5|max:255',
                 'city' => 'required|min:5|max:255',
                 'state' => 'required|min:2|max:2|alpha',
                 'zip' => 'required|min:5|max:99999|integer',
-                'corp_name' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9(),.-])+))*(\s)*$/'],
-                'dba' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
-                'branch' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'corp_name' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z0-9]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9(),.-])+))*(\s)*$/'],
+                'dba' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z0-9]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
+                'branch' => ['nullable', 'max:255', 'regex:/^(\s)*[A-Za-z0-9]+((\s)?((\'|\-|\.|\_)?([A-Za-z0-9()])+))*(\s)*$/'],
                 'ein' => 'nullable|min:10|max:10|regex:/^[0-9]\d{1}-\d{7}$/',
                 'corp_state' => 'nullable|min:2|max:2|alpha',
                 'work_phone' => 'nullable|min:12|max:12|regex:/^[2-9]\d{2}-\d{3}-\d{4}$/',
