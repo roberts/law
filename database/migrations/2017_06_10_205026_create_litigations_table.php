@@ -18,7 +18,7 @@ class CreateLitigationsTable extends Migration
             $table->string('case_number')->index();
             // Can be composed of multiple matters (files)
             $table->string('county');
-            $table->string('state');
+            $table->string('state', 2);
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
