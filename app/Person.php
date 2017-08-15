@@ -80,8 +80,9 @@ class Person extends Model
     {
         return $this->belongsToMany('App\Organization', 'organization_members', 'member_id', 'organization_id');
     }
-    public function primaryOrganization()
+
+    public function primary()
     {
-      return $this->organizations()->first();
+      return $this->hasOne('App\PrimaryOrganization', 'member_id');
     }
 }
