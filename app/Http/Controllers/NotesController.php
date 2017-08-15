@@ -45,7 +45,21 @@ class NotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+                'note' => 'required|min:5|max:2000',
+                'broadcast' => ['required', Rule::in(['none', 'firm', 'all']),
+                'notable_type' => ['required', Rule::in(['App\File', 'App\Litigation', 'App\Person', 'App\Organization']),
+                'notable_id' => 'required|min:1|integer'
+            ]);
+
+        $contact = Organization::create([
+                'note' => $request->note,
+                'broadcast' => $request->broadcast,
+                'notable_type' => $request->notable_type,
+                'notable_id' => $request->notable_id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
     }
 
     /**

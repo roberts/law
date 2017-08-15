@@ -150,9 +150,9 @@ class File extends Model
     }
 
     /**
-     * Get the creator of the file.
+     * Get the user that last updated the file.
      */
-    public function latestUpdater()
+    public function updater()
     {
         return $this->belongsTo('App\User', 'updated_by');
     }
@@ -171,6 +171,14 @@ class File extends Model
     public function referrer()
     {
         return $this->belongsTo('App\Contact', 'referral_id');
+    }
+
+    /**
+     * Get all of the notes about the file.
+     */
+    public function notes()
+    {
+        return $this->morphMany('App\Note', 'notable');
     }
  
 

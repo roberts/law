@@ -15,7 +15,7 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('notable_type')->index(); // either matter or litigation or contact or organization
+            $table->string('notable_type')->index(); // either matter or litigation or person or organization
             $table->unsignedInteger('notable_id')->index();
             $table->enum('broadcast', ['none', 'firm', 'all'])->default('none'); // Should note be shown on home screen? None, firm, all (display on co-counsel firms and user’s firm)
             $table->text('note', 2000);

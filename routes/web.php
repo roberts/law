@@ -32,8 +32,16 @@ Route::group(['prefix' => 'files'], function () {
     Route::get('{filetype}/pre', 'FilesController@pre');
     Route::get('{filetype}/litigation', 'FilesController@litigation');
     Route::get('{filetype}/closed', 'FilesController@closed');
+    Route::post('{filetype}/{file}/notes', 'FilesController@storeNote');
     Route::get('{filetype}/{file}', 'FilesController@show');
 });
+Route::get('litigations', 'LitigationsController@index');
+	Route::group(['prefix' => 'litigations'], function () {
+	    Route::get('create', 'LitigationsController@create');
+	    Route::post('create', 'LitigationsController@store');
+	    Route::post('{litigation}/notes', 'LitigationsController@storeNote');
+	    Route::get('{litigation}', 'LitigationsController@show');
+	});
 
 Route::get('contacts', 'ContactsController@index');
 Route::group(['prefix' => 'contacts'], function () {
@@ -45,6 +53,7 @@ Route::group(['prefix' => 'contacts'], function () {
 		Route::get('other', 'OrganizationsController@other');
 	    Route::get('create', 'OrganizationsController@create');
 	    Route::post('create', 'OrganizationsController@store');
+	    Route::post('{organization}/notes', 'OrganizationsController@storeNote');
 	    Route::get('{organization}', 'OrganizationsController@show');
 	});
 	Route::get('persons', 'PersonsController@index');
@@ -53,6 +62,7 @@ Route::group(['prefix' => 'contacts'], function () {
 		Route::get('female', 'PersonsController@female');
 	    Route::get('create', 'PersonsController@create');
 	    Route::post('create', 'PersonsController@store');
+	    Route::post('{person}/notes', 'PersonsController@storeNote');
 	    Route::get('{person}', 'PersonsController@show');
 	});
 });

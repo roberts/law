@@ -85,4 +85,13 @@ class Person extends Model
     {
       return $this->hasOne('App\PrimaryOrganization', 'member_id');
     }
+
+    /**
+     * Get all of the notes about the person.
+     */
+    public function notes()
+    {
+        return $this->morphMany('App\Note', 'notable');
+    }
+
 }

@@ -174,6 +174,25 @@ class FilesController extends Controller
     }
 
     /**
+     * Store a new note for this file.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeNote(File $file, Request $request)
+    {
+        $this->validate($request, [
+                'note' => 'required|min:5|max:2000',
+                'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])
+            ]);
+        $note = new App\Note([
+                'note' => $request->note,
+                'broadcast' => $request->broadcast
+            ]);
+        $file->notes()->save($note);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\File  $file

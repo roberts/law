@@ -73,4 +73,12 @@ class Organization extends Model
         return $this->hasMany('App\File', 'counsel');
     }
 
+    /**
+     * Get all of the notes about the organization.
+     */
+    public function notes()
+    {
+        return $this->morphMany('App\Note', 'notable');
+    }
+
 }

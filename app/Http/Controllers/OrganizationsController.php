@@ -146,6 +146,25 @@ class OrganizationsController extends Controller
     }
 
     /**
+     * Store a new note for this organization.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeNote(Organization $organization, Request $request)
+    {
+        $this->validate($request, [
+                'note' => 'required|min:5|max:2000',
+                'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])
+            ]);
+        $note = new App\Note([
+                'note' => $request->note,
+                'broadcast' => $request->broadcast
+            ]);
+        $organization->notes()->save($note);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Organization  $organization

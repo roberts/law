@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Litigation;
 use Illuminate\Http\Request;
 
-class LitigationController extends Controller
+class LitigationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,6 +47,25 @@ class LitigationController extends Controller
     public function show(Litigation $litigation)
     {
         //
+    }
+
+    /**
+     * Store a new note for this litigation.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeNote(Litigation $litigation, Request $request)
+    {
+        $this->validate($request, [
+                'note' => 'required|min:5|max:2000',
+                'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])
+            ]);
+        $note = new App\Note([
+                'note' => $request->note,
+                'broadcast' => $request->broadcast
+            ]);
+        $litigation->notes()->save($note);
     }
 
     /**
