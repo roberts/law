@@ -34,7 +34,7 @@ class File extends Model
     protected $guarded = [];
 
     /**
-     * Get a string path for the quote.
+     * Get a string path for the file.
      *
      * @return string
      */
@@ -138,7 +138,7 @@ class File extends Model
      */
     public function litigation()
     {
-        return $this->belongsTo('App\Case', 'case_id');
+        return $this->belongsTo('App\Litigation');
     }
 
     /**

@@ -17,6 +17,7 @@ class CreateFileTypesTable extends Migration
             $table->increments('id');
             $table->string('slug')->unique()->index();
             $table->string('title')->unique();
+            $table->string('abbreviation', 3)->unique(); // 3 letter abbreviation unique to the File Type
             $table->string('model')->unique();
             $table->string('db_table')->unique();
             $table->timestamps();

@@ -4,11 +4,11 @@
   <section class="section">
     <div style="height:150px;"></div>
     <div class="container">
-      <h1 class="title">Files</h1>
-      <h2 class="subtitle">List of files/matters in RLO Portal</h2>
+      <h1 class="title">File Room</h1>
+      <h2 class="subtitle">List of litigations in RLO Portal</h2>
       <hr>
       <nav id="persons" class="panel">
-        <p class="panel-heading">Files</p>
+        <p class="panel-heading">Litigations</p>
         <div class="panel-block">
           <p class="control has-icons-left">
             <input class="input is-small" type="text" placeholder="search">
@@ -24,20 +24,20 @@
           <a href="/files/litigation" class="{{ set_active('files/litigation') }}">litigation</a>
           <a href="/files/closed" class="{{ set_active('files/closed') }}">closed</a>
         </p>
-        @foreach ($files as $file)
-          <a href="{{ $file->path() }}" class="panel-block">
+        @foreach ($litigations as $litigation)
+          <a href="{{ $litigation->path() }}" class="panel-block">
             <div class="column is-one-third" style="padding:0;">
               <span class="panel-icon" style="vertical-align: 15%;">
-                <i class="fa fa-archive"></i>
-              </span>{{ $file->file_number }}
+                <i class="fa fa-gavel"></i>
+              </span>{{ $litigation->reference_number }}
             </div>
             <div class="column is-one-third has-text-centered" style="padding:0;">
-              @foreach ($file->clients as $client)
+              @foreach ($litigation->clients as $client)
                   {{ $client->display_name }}
               @endforeach
             </div>
             <div class="column is-one-third has-text-right" style="padding:0;">
-                {{ $file->current->status->title }}
+                {{ $litigation->current->status->title }}
             </div>
           </a>
         @endforeach

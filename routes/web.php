@@ -11,37 +11,30 @@
 |
 */
 
-Route::get('/', function () { return view('welcome'); })->middleware('auth');
-
+Route::get('/', function () { return view('desk'); })->middleware('auth');
 Auth::routes();
-
-Route::get('desk', function () { return view('desk'); })->middleware('auth');
-Route::get('conference', function () { return view('conference'); })->middleware('auth');
-Route::get('accounting', function () { return view('accounting'); })->middleware('auth');
 
 Route::get('files', 'FilesController@index');
 Route::group(['prefix' => 'files'], function () {
     Route::get('leads', 'FilesController@leads');
     Route::get('pre', 'FilesController@pre');
-    Route::get('litigation', 'FilesController@litigation');
+    Route::get('litigation', 'LitigationsController@index');
     Route::get('closed', 'FilesController@closed');
     Route::get('create', 'FilesController@create');
     Route::post('create', 'FilesController@store');
-    Route::get('{filetype}', 'FileTypesController@show');
     Route::get('{filetype}/leads', 'FilesController@leads');
     Route::get('{filetype}/pre', 'FilesController@pre');
-    Route::get('{filetype}/litigation', 'FilesController@litigation');
-    Route::get('{filetype}/closed', 'FilesController@closed');
-    Route::post('{filetype}/{file}/notes', 'FilesController@storeNote');
-    Route::get('{filetype}/{file}', 'FilesController@show');
-});
-Route::get('litigations', 'LitigationsController@index');
-	Route::group(['prefix' => 'litigations'], function () {
-	    Route::get('create', 'LitigationsController@create');
+    Route::get('{filetype}/litigation', 'LitigationsController@filetypeindex');
+    Route::group(['prefix' => '{filetype}/litigation'], function () {
 	    Route::post('create', 'LitigationsController@store');
 	    Route::post('{litigation}/notes', 'LitigationsController@storeNote');
 	    Route::get('{litigation}', 'LitigationsController@show');
 	});
+    Route::get('{filetype}/closed', 'FilesController@closed');
+    Route::post('{filetype}/{file}/notes', 'FilesController@storeNote');
+    Route::get('{filetype}/{file}', 'FilesController@show');
+    Route::get('{filetype}', 'FileTypesController@show');
+});
 
 Route::get('contacts', 'ContactsController@index');
 Route::group(['prefix' => 'contacts'], function () {
@@ -66,3 +59,6 @@ Route::group(['prefix' => 'contacts'], function () {
 	    Route::get('{person}', 'PersonsController@show');
 	});
 });
+
+Route::get('conference', function () { return view('conference'); })->middleware('auth');
+Route::get('accounting', function () { return view('accounting'); })->middleware('auth');

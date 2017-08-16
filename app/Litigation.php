@@ -23,7 +23,7 @@ class Litigation extends Model
      */
     public function getRouteKeyName()
     {
-        return 'case_number';
+        return 'reference_number';
     }
     
     /**
@@ -34,13 +34,29 @@ class Litigation extends Model
     protected $guarded = [];
 
     /**
-     * Get a string path for the quote.
+     * Get a string path for the litigation.
      *
      * @return string
      */
     public function path()
     {
-        return "/litigation/{$this->case_number}";
+        return "/files/{$this->filetype->slug}/litigation/{$this->reference_number}";
+    }
+
+    /**
+     * Get the file type for the case/litigation.
+     */
+    public function filetype()
+    {
+        return $this->belongsTo('App\FileType', 'file_type_id');
+    }
+
+    /**
+     * Get the files for the case/litigation.
+     */
+    public function files()
+    {
+        return $this->hasMany('App\File');
     }
 
     /**

@@ -4,8 +4,8 @@
   <section class="section">
     <div style="height:150px;"></div>
     <div class="container">
-      <h1 class="title">Litigation</h1>
-      <h2 class="subtitle">List of cases/litigations in RLO Portal</h2>
+      <h1 class="title">File Room</h1>
+      <h2 class="subtitle">List of litigations in RLO Portal</h2>
       <hr>
       <nav id="persons" class="panel">
         <p class="panel-heading">Litigations</p>
@@ -18,21 +18,26 @@
           </p>
         </div>
         <p class="panel-tabs">
-          <a href="/files" class="{{ set_active('litigations') }}">all</a>
+          <a href="/files" class="{{ set_active('files') }}">all</a>
+          <a href="/files/leads" class="{{ set_active('files/leads') }}">leads</a>
+          <a href="/files/pre" class="{{ set_active('files/pre') }}">pre-litigation</a>
           <a href="/files/litigation" class="{{ set_active('files/litigation') }}">litigation</a>
+          <a href="/files/closed" class="{{ set_active('files/closed') }}">closed</a>
         </p>
         @foreach ($litigations as $litigation)
           <a href="{{ $litigation->path() }}" class="panel-block">
             <div class="column is-one-third" style="padding:0;">
               <span class="panel-icon" style="vertical-align: 15%;">
-                <i class="fa fa-archive"></i>
-              </span>{{ $litigation->case_number }}
+                <i class="fa fa-gavel"></i>
+              </span>{{ $litigation->reference_number }}
             </div>
             <div class="column is-one-third has-text-centered" style="padding:0;">
-              
+              @foreach ($litigation->clients as $client)
+                  {{ $client->display_name }}
+              @endforeach
             </div>
             <div class="column is-one-third has-text-right" style="padding:0;">
-                
+                {{ $litigation->current->status->title }}
             </div>
           </a>
         @endforeach

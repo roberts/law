@@ -23,7 +23,7 @@
             <header class="nav">
               <div class="container">
                 <div class="nav-left">
-                  <a href="/" class="nav-item">
+                  <a href="https://rloky.com" class="nav-item">
                     <img src="/img/rloky.png" alt="Logo">
                   </a>
                 </div>
@@ -33,7 +33,7 @@
                   <span></span>
                 </span>
                 <div class="nav-right nav-menu" :class="{ 'is-active': showNav }" style="overflow: visible;">
-                  <a href="/desk" class="nav-item{{ set_active('desk*') }}">Desk</a>
+                  <a href="/" class="nav-item{{ set_active('/') }}">Desk</a>
                   <a href="/files" class="nav-item{{ set_active('files*') }}">File Room</a>
                   <a href="/conference" class="nav-item{{ set_active('conference*') }}">Conference Room</a>
                   <a href="/contacts" class="nav-item{{ set_active('contacts*') }}">Contacts</a>

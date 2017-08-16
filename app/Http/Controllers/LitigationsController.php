@@ -26,17 +26,19 @@ class LitigationsController extends Controller
     {
         $litigations = Litigation::latest()->get();
 
-        return view('litigations.index', compact('litigations'));
+        return view('files.litigation.index', compact('litigations'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource for each file type.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function filetypeindex()
     {
-        return view('litigations.create', compact(''));
+        $litigations = Litigation::latest()->get();
+
+        return view('files.litigation.filetypeindex', compact('litigations'));
     }
 
     /**
@@ -75,9 +77,9 @@ class LitigationsController extends Controller
      * @param  \App\Litigation  $litigation
      * @return \Illuminate\Http\Response
      */
-    public function show(Litigation $litigation)
+    public function show(FileType $filetype, Litigation $litigation)
     {
-        return view('litigations.show', compact('litigation'));
+        return view('files.litigation.show', compact('litigation'));
     }
 
     /**

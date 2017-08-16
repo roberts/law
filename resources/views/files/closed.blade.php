@@ -4,7 +4,7 @@
   <section class="section">
     <div style="height:150px;"></div>
     <div class="container">
-      <h1 class="title">Files</h1>
+      <h1 class="title">File Room</h1>
       <h2 class="subtitle">List of files/matters in RLO Portal</h2>
       <hr>
       <nav id="persons" class="panel">

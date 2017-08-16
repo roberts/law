@@ -16,6 +16,7 @@ class FileTypesTableSeeder extends Seeder
         DB::table('file_types')->insert([
             'slug'          => 'dust-mask',
             'title'         => 'Dust Mask',
+            'abbreviation'  => 'CDM',
             'model'         => 'App\IntakeMask',
             'db_table'      => 'intake_masks',
             'created_at'    => $now,
@@ -25,6 +26,7 @@ class FileTypesTableSeeder extends Seeder
         DB::table('file_types')->insert([
             'slug'          => 'dui',
             'title'         => 'DUI',
+            'abbreviation'  => 'DUI',
             'model'         => 'App\IntakeDui',
             'db_table'      => 'intake_duis',
             'created_at'    => $now,
@@ -34,6 +36,7 @@ class FileTypesTableSeeder extends Seeder
         DB::table('file_types')->insert([
             'slug'          => 'car-wreck',
             'title'         => 'Car Wreck',
+            'abbreviation'  => 'CAR',
             'model'         => 'App\IntakeWreck',
             'db_table'      => 'intake_wrecks',
             'created_at'    => $now,
@@ -43,6 +46,7 @@ class FileTypesTableSeeder extends Seeder
         DB::table('file_types')->insert([
             'slug'          => 'slip-fall',
             'title'         => 'Slip & Fall',
+            'abbreviation'  => 'SNF',
             'model'         => 'App\IntakeFall',
             'db_table'      => 'intake_falls',
             'created_at'    => $now,

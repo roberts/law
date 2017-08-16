@@ -15,8 +15,10 @@ class CreateLitigationsTable extends Migration
     {
         Schema::create('litigations', function (Blueprint $table) { // Also called Litigation
             $table->increments('id');
-            $table->string('case_number')->index();
-            // Can be composed of multiple matters (files)
+            $table->string('reference_number')->unique()->index(); // Format: YYYY-DUI-XXXXXX (year, file_type abbreviation (3 letters), litigation count for file type in that year)
+            $table->unsignedInteger('file_type_id')->index();
+            $table->string('case_number')->nullable();
+            // Can be composed of multiple matters (files) of the same file type
             $table->string('county');
             $table->string('state', 2);
             $table->unsignedInteger('created_by');
