@@ -8,13 +8,25 @@ use Illuminate\Http\Request;
 class LitigationsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $litigations = Litigation::latest()->get();
+
+        return view('litigations.index', compact('litigations'));
     }
 
     /**
@@ -24,7 +36,7 @@ class LitigationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('litigations.create', compact(''));
     }
 
     /**
@@ -34,17 +46,6 @@ class LitigationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Litigation  $litigation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Litigation $litigation)
     {
         //
     }
@@ -66,6 +67,17 @@ class LitigationsController extends Controller
                 'broadcast' => $request->broadcast
             ]);
         $litigation->notes()->save($note);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Litigation  $litigation
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Litigation $litigation)
+    {
+        return view('litigations.show', compact('litigation'));
     }
 
     /**
