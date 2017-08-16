@@ -116,7 +116,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:00:00',
-            'created_at'    => '2017-08-15 10:00:00',
+            'updated_at'    => '2017-08-15 10:00:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -130,7 +130,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:06:00',
-            'created_at'    => '2017-08-15 10:06:00',
+            'updated_at'    => '2017-08-15 10:06:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -146,7 +146,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:07:00',
-            'created_at'    => '2017-08-15 10:07:00',
+            'updated_at'    => '2017-08-15 10:07:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -162,7 +162,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:08:00',
-            'created_at'    => '2017-08-15 10:08:00',
+            'updated_at'    => '2017-08-15 10:08:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -178,7 +178,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:09:00',
-            'created_at'    => '2017-08-15 10:09:00',
+            'updated_at'    => '2017-08-15 10:09:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -192,7 +192,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:10:00',
-            'created_at'    => '2017-08-15 10:10:00',
+            'updated_at'    => '2017-08-15 10:10:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -206,7 +206,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:11:00',
-            'created_at'    => '2017-08-15 10:11:00',
+            'updated_at'    => '2017-08-15 10:11:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -220,7 +220,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:12:00',
-            'created_at'    => '2017-08-15 10:12:00',
+            'updated_at'    => '2017-08-15 10:12:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -235,7 +235,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:13:00',
-            'created_at'    => '2017-08-15 10:13:00',
+            'updated_at'    => '2017-08-15 10:13:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -249,7 +249,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:14:00',
-            'created_at'    => '2017-08-15 10:14:00',
+            'updated_at'    => '2017-08-15 10:14:00',
         ]);
 
         DB::table('contacts')->insert([
@@ -263,7 +263,7 @@ class ContactsTableSeeder extends Seeder
             'created_by'    => 1,
             'updated_by'    => 1,
             'created_at'    => '2017-08-15 10:15:00',
-            'created_at'    => '2017-08-15 10:15:00',
+            'updated_at'    => '2017-08-15 10:15:00',
         ]);
         
     }
