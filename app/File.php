@@ -14,7 +14,7 @@ class File extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at'];
+    protected $dates = ['sol', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * Get the route key for the model.
@@ -48,7 +48,7 @@ class File extends Model
      */
     public function counsel()
     {
-        return $this->belongsTo('App\Organization', 'counsel');
+        return $this->belongsTo('App\Organization', 'counsel_id');
     }
 
     /**
@@ -65,6 +65,14 @@ class File extends Model
     public function clients()
     {
         return $this->belongsToMany('App\Contact', $this->filetype->db_table, 'file_id', 'client_id');
+    }
+
+    /**
+     * The defendants that belong to the file.
+     */
+    public function defendants()
+    {
+        //
     }
 
     /**

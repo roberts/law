@@ -18,7 +18,7 @@
           <div class="field">
             <div class="control has-icons-left">
               <div class="select is-fullwidth">
-                <select id="counsel" name="counsel">
+                <select id="counsel_id" name="counsel_id">
                     @foreach ($firms as $firm)
                       <option value="{{ $firm->id}}">{{ $firm->display_name }}</option>
                     @endforeach

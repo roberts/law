@@ -70,7 +70,7 @@ class Organization extends Model
      */
     public function files()
     {
-        return $this->hasMany('App\File', 'counsel');
+        return $this->hasMany('App\File', 'counsel_id');
     }
 
     /**

@@ -112,7 +112,7 @@ class FilesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                'counsel' => 'required|min:1|integer',
+                'counsel_id' => 'required|min:1|integer',
                 'file_type_id' => 'required|min:1|integer',
                 'source_id' => 'required|min:1|integer',
                 'referral_id' => 'nullable|min:1|integer'
@@ -125,7 +125,7 @@ class FilesController extends Controller
 
         $file = File::create([
                 'file_number' => $file_number,
-                'counsel' => $request->counsel,
+                'counsel_id' => $request->counsel_id,
                 'file_type_id' => $request->file_type_id,
                 'source_id' => $request->source_id,
                 'referral_id' => $request->referral_id ?: null,
