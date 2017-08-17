@@ -110,7 +110,7 @@ class StatusesTableSeeder extends Seeder
 
         DB::table('statuses')->insert([
             'slug'          => 'pre-litigation-settlement',
-            'title'         => 'Settlement',
+            'title'         => 'Settlement Negotiation in Pre-Litigation',
             'description'   => 'Settlement discussions on matter in pre-litigation.',
             'parent'        => 2,
             'created_at'    => $now,
@@ -182,7 +182,7 @@ class StatusesTableSeeder extends Seeder
 
         DB::table('statuses')->insert([
             'slug'          => 'litigation-settlement',
-            'title'         => 'Settlement',
+            'title'         => 'Settlement Negotiation in Litigation',
             'description'   => 'Settlement discussions on matter in litigation.',
             'parent'        => 3,
             'created_at'    => $now,
