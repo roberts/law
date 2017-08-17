@@ -6,12 +6,14 @@ use App\File;
 use App\FileType;
 use App\Contact;
 use App\Source;
+use App\Note;
 use App\IntakeMask;
 use App\IntakeDui;
 use App\IntakeWreck;
 use App\IntakeFall;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class FilesController extends Controller
 {
@@ -179,17 +181,20 @@ class FilesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeNote(File $file, Request $request)
+    public function storeNote(FileType $filetype, File $file, Request $request)
     {
         $this->validate($request, [
                 'note' => 'required|min:5|max:2000',
                 'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])]
             ]);
-        $note = new App\Note([
+        $note = new Note([
                 'note' => $request->note,
-                'broadcast' => $request->broadcast
+                'broadcast' => $request->broadcast,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
             ]);
         $file->notes()->save($note);
+        return back();
     }
 
     /**

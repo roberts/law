@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Litigation;
+use App\Note;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class LitigationsController extends Controller
@@ -58,17 +60,20 @@ class LitigationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeNote(Litigation $litigation, Request $request)
+    public function storeNote(FileType $filetype, Litigation $litigation, Request $request)
     {
         $this->validate($request, [
                 'note' => 'required|min:5|max:2000',
                 'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])]
             ]);
-        $note = new App\Note([
+        $note = new Note([
                 'note' => $request->note,
-                'broadcast' => $request->broadcast
+                'broadcast' => $request->broadcast,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
             ]);
         $litigation->notes()->save($note);
+        return back();
     }
 
     /**

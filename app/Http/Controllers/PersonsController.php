@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Person;
+use App\Note;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class PersonsController extends Controller
@@ -160,11 +162,14 @@ class PersonsController extends Controller
                 'note' => 'required|min:5|max:2000',
                 'broadcast' => ['required', Rule::in(['none', 'firm', 'all'])]
             ]);
-        $note = new App\Note([
+        $note = new Note([
                 'note' => $request->note,
-                'broadcast' => $request->broadcast
+                'broadcast' => $request->broadcast,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
             ]);
         $person->notes()->save($note);
+        return back();
     }
 
     /**
