@@ -24,10 +24,6 @@
 				    @endif
 				  </a>
 				  <a class="panel-block">
-				    <span class="panel-icon"><i class="fa fa-balance-scale"></i></span>
-				    counsel: {{ $file->counsel->display_name }}
-				  </a>
-				  <a class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-bullseye"></i></span>
 				    @if (count($file->defendants) > 0)
 					    @if (count($file->defendants) > 1) 
@@ -39,6 +35,10 @@
 				    	no defendants yet
 				    @endif
 				  </a>
+				  <a class="panel-block">
+				    <span class="panel-icon"><i class="fa fa-balance-scale"></i></span>
+				    counsel: {{ $file->counsel->display_name }}
+				  </a>
 				  @if ($file->sol)
 				  <a class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-calendar"></i></span>
@@ -47,22 +47,27 @@
 				  @endif
 				  <a class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-calendar"></i></span>
-				    created: {{ $file->created_at->toFormattedDateString() }}
-				  </a>
-				  <a class="panel-block">
-				    <span class="panel-icon"><i class="fa fa-user"></i></span>
-				    created by: {{ $file->creator->details->display_name }}
+				    created: {{ $file->created_at->toFormattedDateString() }} by {{ $file->creator->details->display_name }}
 				  </a>
 				</nav>
 				<div class="content">
-				  <h2>Status</h2>
-				  <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
-				  <ul>
-				    <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
-				    <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
-				    <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
-				    <li>Ut non enim metus.</li>
-				  </ul>
+				  	<h2>Status History</h2>
+				  	<p></p>
+				  	<ul>
+					@foreach ($file->statuses as $status)
+						<li>{{ $status->pivot->created_at->toFormattedDateString() }} - {{ $status->pivot->created_by }} changed status to {{ $status->title }}</li>
+					@endforeach
+					</ul>
+					<h2>Clients</h2>
+					<p></p>
+					<h2>Defendants</h2>
+					<p></p>
+					<h2>Counsel & Co-Counsels</h2>
+					<p></p>
+					<h2>Statute of Limitations</h2>
+					<p></p>
+					<h2>Creation Details</h2>
+					<p></p>
 				</div>
 			</div>
 			<div class="column is-4-desktop is-5-tablet">
