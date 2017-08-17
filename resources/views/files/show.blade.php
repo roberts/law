@@ -13,7 +13,7 @@
 				  <p class="panel-heading">overview</p>
 				  <a class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-info-circle"></i></span>
-				    {{ $file->current->status->title }}
+				    status: {{ $file->current->status->title }}
 				  </a>
 				  <a class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-address-book-o"></i></span>
@@ -29,7 +29,15 @@
 				  </a>
 				  <a class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-bullseye"></i></span>
-				    no defendants yet
+				    @if (count($file->defendants) > 0)
+					    @if (count($file->defendants) > 1) 
+					    	defendants:  {{ $file->defendants->first()->display_name }}, et al. 
+					    @else 
+					    	defendant:  {{ $file->defendants->first()->display_name }}
+					    @endif
+				    @else 
+				    	no defendants yet
+				    @endif
 				  </a>
 				  @if ($file->sol)
 				  <a class="panel-block">
@@ -46,6 +54,16 @@
 				    created by: {{ $file->creator->details->display_name }}
 				  </a>
 				</nav>
+				<div class="content">
+				  <h2>Status</h2>
+				  <p>Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+				  <ul>
+				    <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
+				    <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
+				    <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
+				    <li>Ut non enim metus.</li>
+				  </ul>
+				</div>
 			</div>
 			<div class="column is-4-desktop is-5-tablet">
 				<form method="POST" action="{{ $file->path() }}/notes">

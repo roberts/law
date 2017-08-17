@@ -68,11 +68,19 @@ class File extends Model
     }
 
     /**
+     * The file's relations.
+     */
+    public function relations()
+    {
+        return $this->belongsToMany('App\Contact', 'relations', 'file_id', 'related_id')->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
+    }
+
+    /**
      * The defendants that belong to the file.
      */
     public function defendants()
     {
-        //
+        return $this->belongsToMany('App\Contact', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 1)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
     }
 
     /**
@@ -187,6 +195,30 @@ class File extends Model
     public function notes()
     {
         return $this->morphMany('App\Note', 'notable');
+    }
+
+    /**
+     * The co-counsels that belong to the file.
+     */
+    public function cocounsels()
+    {
+        return $this->belongsToMany('App\Organization', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 2)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
+    }
+
+    /**
+     * The co-workers that belong to the file's client.
+     */
+    public function coworkers()
+    {
+        return $this->belongsToMany('App\Person', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 3)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
+    }
+
+    /**
+     * The family that belong to the file's client.
+     */
+    public function family()
+    {
+        return $this->belongsToMany('App\Person', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 4)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
     }
  
 

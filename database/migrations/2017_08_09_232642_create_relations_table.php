@@ -18,6 +18,7 @@ class CreateRelationsTable extends Migration
             $table->unsignedInteger('relationship_id')->index(); // Id on relationship table. Relation Types = defendant, co-counsel, family, coworker, provider, employer, mine, etc.
             $table->unsignedInteger('file_id')->index();
             $table->unsignedInteger('related_id')->index(); // Person or organization on contacts table. Limited by relationship type.
+            $table->unsignedInteger('client_id')->index(); // Client on contacts table. Since a file can have multiple clients, must specify which one.
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('updated_by');
             $table->timestamps();
@@ -28,6 +29,7 @@ class CreateRelationsTable extends Migration
             $table->foreign('relationship_id')->references('id')->on('relationships')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('file_id')->references('id')->on('files')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('related_id')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('client_id')->references('id')->on('contacts')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('updated_by')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
         });
@@ -44,6 +46,7 @@ class CreateRelationsTable extends Migration
             $table->dropForeign(['relationship_id']);
             $table->dropForeign(['file_id']);
             $table->dropForeign(['related_id']);
+            $table->dropForeign(['client_id']);
             $table->dropForeign(['created_by']);
             $table->dropForeign(['updated_by']);
         });
