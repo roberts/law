@@ -99,6 +99,7 @@
 							<li>{{ $client->address }}<br>{{ $client->city }}, {{ $client->state }} {{ $client->zip }}</li>
 						</ul>
 					@endforeach
+					@if ($file->file_type_id  == 3)
 					<p><a onclick="show('clientForm')">Add another Client</a></p>
 					<article class="message" id="clientForm" style="display: none;">
 						<div class="message-body">
@@ -107,7 +108,7 @@
 								<div class="field">
 									<div class="control">
 										<div class="select">
-											<select id="status_id" name="status_id">
+											<select id="client_id" name="client_id">
 											@foreach ($contacts as $contact)
 												<option value="{{ $contact->id }}">{{ $contact->display_name }}</option>
 											@endforeach
@@ -119,11 +120,12 @@
 									<div class="control">
 										<button type="submit" class="button is-primary">Add Client</button>
 									</div>
-									<p class="control"><a href="/contacts/organizations/create" class="button is-info is-outlined">Create Contact</a></p>
+									<p class="control"><a href="/contacts/persons/create" class="button is-info is-outlined">Create Contact</a></p>
 								</div>
 							</form>
 						</div>
 					</article>
+					@endif
 					@if (count($file->defendants) > 1)
 					<h2>Defendants</h2>
 					<hr>

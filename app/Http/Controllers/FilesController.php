@@ -239,6 +239,28 @@ class FilesController extends Controller
     }
 
     /**
+     * Store a new client for this file.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeClient(FileType $filetype, File $file, Request $request)
+    {
+        $this->validate($request, [
+                'client_id' => 'required|min:1|integer'
+            ]);
+        if ($file->file_type_id  == 3) {
+            $intake = IntakeWreck::create([
+                'client_id' => $request->client_id,
+                'file_id' => $file->id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+        }
+        return back();
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\File  $file
