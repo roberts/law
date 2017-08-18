@@ -331,9 +331,11 @@ class FilesController extends Controller
      * @param  \App\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, File $file)
+    public function update(FileType $filetype, File $file, Request $request)
     {
-        //
+        $this->validate($request, ['sol' => 'required|date']);
+        File::where('id', $file->id)->update(['sol' => $request->sol]);
+        return back();
     }
 
     /**

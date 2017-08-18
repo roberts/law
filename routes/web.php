@@ -35,6 +35,7 @@ Route::group(['prefix' => 'files'], function () {
     Route::post('{filetype}/{file}/relations', 'FilesController@storeRelation');
     Route::post('{filetype}/{file}/statuses', 'FilesController@storeStatus');
     Route::post('{filetype}/{file}/clients', 'FilesController@storeClient');
+    Route::post('{filetype}/{file}/update', 'FilesController@update');
     Route::get('{filetype}/{file}', 'FilesController@show');
     Route::get('{filetype}', 'FileTypesController@show');
 });

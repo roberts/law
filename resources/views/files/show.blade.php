@@ -207,7 +207,35 @@
 					</article>
 					<h2 style="position:relative;">Statute of Limitations<a name="Matters" style="position:absolute; top:-225px;"></a></h2>
 					<hr>
-					<p></p>
+					@if ($file->sol)
+						<ul>
+							<li><b>{{ $file->sol->toFormattedDateString() }}</b></li>
+						</ul>
+					@else
+						<article class="message">
+							<div class="message-body">
+								<form method="POST" action="{{ $file->path() }}/update">
+								  	{{ csrf_field() }}
+									<div class="field">
+										<p class="control is-expanded has-icons-left">
+											<input class="input @if ($errors->has('sol')) is-danger @endif" id="sol" name="sol" value="{{ old('sol') }}" type="date" placeholder="SOL Date">
+											<span class="icon is-small is-left">
+												<i class="fa fa-calendar"></i>
+											</span>
+											@if ($errors->has('sol'))
+												<p class="help is-danger">{{ $errors->first('sol') }}</p>
+											@endif
+										</p>
+									</div>
+									<div class="field is-grouped">
+										<div class="control">
+											<button type="submit" class="button is-primary">Add SOL</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</article>
+					@endif
 				</div>
 			</div>
 			<div class="column is-4-desktop is-5-tablet">
