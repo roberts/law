@@ -59,26 +59,29 @@
 					@endforeach
 						<li><a onclick="show('statusForm')">Update to new Status</a></li>
 					</ul>
-					<form id="statusForm" style="display: none;" method="POST" action="{{ $file->path() }}/statuses">
-						<hr>
-					  	{{ csrf_field() }}
-						<div class="field">
-							<div class="control">
-								<div class="select">
-									<select id="status_id" name="status_id">
-									@foreach ($statusoptions as $option)
-										<option value="{{ $option->id }}">{{ $option->title }}</option>
-									@endforeach
-									</select>
+					<article class="message" id="statusForm" style="display: none;">
+						<div class="message-body">
+							<form method="POST" action="{{ $file->path() }}/statuses">
+							  	{{ csrf_field() }}
+								<div class="field">
+									<div class="control">
+										<div class="select">
+											<select id="status_id" name="status_id">
+											@foreach ($statusoptions as $option)
+												<option value="{{ $option->id }}">{{ $option->title }}</option>
+											@endforeach
+											</select>
+										</div>
+									</div>
 								</div>
-							</div>
+								<div class="field is-grouped">
+									<div class="control">
+										<button type="submit" class="button is-primary">Change Status</button>
+									</div>
+								</div>
+							</form>
 						</div>
-						<div class="field is-grouped">
-							<div class="control">
-								<button type="submit" class="button is-primary">Change Status</button>
-							</div>
-						</div>
-					</form>
+					</article>
 					@if (count($file->clients) > 1)
 					<h2>Clients</h2>
 					@else
@@ -95,26 +98,29 @@
 						</ul>
 					@endforeach
 					<p><a onclick="show('clientForm')">Add another Client</a></p>
-					<form id="clientForm" style="display: none;" method="POST" action="{{ $file->path() }}/clients">
-						<hr>
-					  	{{ csrf_field() }}
-						<div class="field">
-							<div class="control">
-								<div class="select">
-									<select id="status_id" name="status_id">
-									@foreach ($statusoptions as $option)
-										<option value="{{ $option->id }}">{{ $option->title }}</option>
-									@endforeach
-									</select>
+					<article class="message" id="clientForm" style="display: none;">
+						<div class="message-body">
+							<form method="POST" action="{{ $file->path() }}/clients">
+							  	{{ csrf_field() }}
+								<div class="field">
+									<div class="control">
+										<div class="select">
+											<select id="status_id" name="status_id">
+											@foreach ($statusoptions as $option)
+												<option value="{{ $option->id }}">{{ $option->title }}</option>
+											@endforeach
+											</select>
+										</div>
+									</div>
 								</div>
-							</div>
+								<div class="field is-grouped">
+									<div class="control">
+										<button type="submit" class="button is-primary">Add Client</button>
+									</div>
+								</div>
+							</form>
 						</div>
-						<div class="field is-grouped">
-							<div class="control">
-								<button type="submit" class="button is-primary">Add Client</button>
-							</div>
-						</div>
-					</form>
+					</article>
 					@if (count($file->defendants) > 1)
 					<h2>Defendants</h2>
 					@else
@@ -127,26 +133,30 @@
 						</ul>
 					@endforeach
 					<p><a onclick="show('defendantForm')">Add Defendant</a></p>
-					<form id="defendantForm" style="display: none;" method="POST" action="{{ $file->path() }}/relations">
-						<hr>
-					  	{{ csrf_field() }}
-						<div class="field">
-							<div class="control">
-								<div class="select">
-									<select id="status_id" name="status_id">
-									@foreach ($statusoptions as $option)
-										<option value="{{ $option->id }}">{{ $option->title }}</option>
-									@endforeach
-									</select>
+					<article class="message" id="defendantForm" style="display: none;">
+						<div class="message-body">
+						    <form method="POST" action="{{ $file->path() }}/relations">
+							  	{{ csrf_field() }}
+								<div class="field">
+									<div class="control">
+										<div class="select">
+											<select id="status_id" name="status_id">
+											@foreach ($statusoptions as $option)
+												<option value="{{ $option->id }}">{{ $option->title }}</option>
+											@endforeach
+											</select>
+										</div>
+									</div>
 								</div>
-							</div>
+								<div class="field is-grouped">
+									<div class="control">
+										<button type="submit" class="button is-primary">Add Defendant</button>
+									</div>
+								</div>
+							</form>
 						</div>
-						<div class="field is-grouped">
-							<div class="control">
-								<button type="submit" class="button is-primary">Add Defendant</button>
-							</div>
-						</div>
-					</form>
+					</article>
+					
 					<h2>Counsel & Co-Counsels</h2>
 					<p><a href="{{ $file->counsel->path() }}">{{ $file->counsel->display_name }}</a></p>
 						<ul>
@@ -159,29 +169,30 @@
 						</ul>
 					@endforeach
 					<p><a onclick="show('cocounselForm')">Add Co-Counsel</a></p>
-					<form id="cocounselForm" style="display: none;" method="POST" action="{{ $file->path() }}/relations">
-						<hr>
-					  	{{ csrf_field() }}
-						<div class="field">
-							<div class="control">
-								<div class="select">
-									<select id="status_id" name="status_id">
-									@foreach ($statusoptions as $option)
-										<option value="{{ $option->id }}">{{ $option->title }}</option>
-									@endforeach
-									</select>
+					<article class="message" id="cocounselForm" style="display: none;">
+						<div class="message-body">
+							<form method="POST" action="{{ $file->path() }}/relations">
+							  	{{ csrf_field() }}
+								<div class="field">
+									<div class="control">
+										<div class="select">
+											<select id="status_id" name="status_id">
+											@foreach ($statusoptions as $option)
+												<option value="{{ $option->id }}">{{ $option->title }}</option>
+											@endforeach
+											</select>
+										</div>
+									</div>
 								</div>
-							</div>
+								<div class="field is-grouped">
+									<div class="control">
+										<button type="submit" class="button is-primary">Add Co-Counsel</button>
+									</div>
+								</div>
+							</form>
 						</div>
-						<div class="field is-grouped">
-							<div class="control">
-								<button type="submit" class="button is-primary">Add Co-Counsel</button>
-							</div>
-						</div>
-					</form>
+					</article>
 					<h2>Statute of Limitations</h2>
-					<p></p>
-					<h2>Creation Details</h2>
 					<p></p>
 				</div>
 			</div>
