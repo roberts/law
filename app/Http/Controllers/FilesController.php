@@ -7,6 +7,7 @@ use App\FileType;
 use App\Contact;
 use App\Source;
 use App\Note;
+use App\Status;
 use App\IntakeMask;
 use App\IntakeDui;
 use App\IntakeWreck;
@@ -205,7 +206,10 @@ class FilesController extends Controller
      */
     public function show(FileType $filetype, File $file)
     {
-        return view('files.show', compact('file'));
+        $statusoptions = Status::orderBy('id', 'asc')->get();
+        $firms = Contact::where('counsel', '=', 1)->orderBy('id')->get();
+
+        return view('files.show', compact('file', 'statusoptions', 'firms'));
     }
 
     /**

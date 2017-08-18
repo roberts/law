@@ -55,15 +55,130 @@
 				  	<p></p>
 				  	<ul>
 					@foreach ($file->statuses as $status)
-						<li>{{ $status->pivot->created_at->toFormattedDateString() }} - {{ $status->pivot->created_by }} changed status to {{ $status->title }}</li>
+						<li>{{ $status->pivot->created_at->toFormattedDateString() }} - {{ App\User::find($status->pivot->created_by)->details->display_name }} changed status to {{ $status->title }}</li>
 					@endforeach
+						<li><a onclick="show('statusForm')">Update to new Status</a></li>
 					</ul>
+					<form id="statusForm" style="display: none;" method="POST" action="{{ $file->path() }}/statuses">
+						<hr>
+					  	{{ csrf_field() }}
+						<div class="field">
+							<div class="control">
+								<div class="select">
+									<select id="status_id" name="status_id">
+									@foreach ($statusoptions as $option)
+										<option value="{{ $option->id }}">{{ $option->title }}</option>
+									@endforeach
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field is-grouped">
+							<div class="control">
+								<button type="submit" class="button is-primary">Change Status</button>
+							</div>
+						</div>
+					</form>
+					@if (count($file->clients) > 1)
 					<h2>Clients</h2>
-					<p></p>
+					@else
+					<h2>Client</h2>
+					@endif
+					@foreach ($file->clients as $client)
+						<p><a href="{{ $client->path() }}">{{ $client->display_name }}</a></p>
+						<ul>
+							<li>Cell Phone: {{ $client->cell_phone }}</li>
+							<li>Home Phone: {{ $client->home_phone }}</li>
+							<li>Work Phone: {{ $client->work_phone }}</li>
+							<li>Email: {{ $client->email }}</li>
+							<li>{{ $client->address }}<br>{{ $client->city }}, {{ $client->state }} {{ $client->zip }}</li>
+						</ul>
+					@endforeach
+					<p><a onclick="show('clientForm')">Add another Client</a></p>
+					<form id="clientForm" style="display: none;" method="POST" action="{{ $file->path() }}/clients">
+						<hr>
+					  	{{ csrf_field() }}
+						<div class="field">
+							<div class="control">
+								<div class="select">
+									<select id="status_id" name="status_id">
+									@foreach ($statusoptions as $option)
+										<option value="{{ $option->id }}">{{ $option->title }}</option>
+									@endforeach
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field is-grouped">
+							<div class="control">
+								<button type="submit" class="button is-primary">Add Client</button>
+							</div>
+						</div>
+					</form>
+					@if (count($file->defendants) > 1)
 					<h2>Defendants</h2>
-					<p></p>
+					@else
+					<h2>Defendant</h2>
+					@endif
+					@foreach ($file->defendants as $defendant)
+						<p><a href="{{ $defendant->path() }}">{{ $defendant->display_name }}</a></p>
+						<ul>
+							<li>{{ $defendant->address }}<br>{{ $defendant->city }}, {{ $defendant->state }} {{ $defendant->zip }}</li>
+						</ul>
+					@endforeach
+					<p><a onclick="show('defendantForm')">Add Defendant</a></p>
+					<form id="defendantForm" style="display: none;" method="POST" action="{{ $file->path() }}/relations">
+						<hr>
+					  	{{ csrf_field() }}
+						<div class="field">
+							<div class="control">
+								<div class="select">
+									<select id="status_id" name="status_id">
+									@foreach ($statusoptions as $option)
+										<option value="{{ $option->id }}">{{ $option->title }}</option>
+									@endforeach
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field is-grouped">
+							<div class="control">
+								<button type="submit" class="button is-primary">Add Defendant</button>
+							</div>
+						</div>
+					</form>
 					<h2>Counsel & Co-Counsels</h2>
-					<p></p>
+					<p><a href="{{ $file->counsel->path() }}">{{ $file->counsel->display_name }}</a></p>
+						<ul>
+							<li>{{ $file->counsel->address }}<br>{{ $file->counsel->city }}, {{ $file->counsel->state }} {{ $file->counsel->zip }}</li>
+						</ul>
+					@foreach ($file->cocounsels as $cocounsel)
+						<p><a href="{{ $cocounsel->path() }}">{{ $cocounsel->display_name }}</a></p>
+						<ul>
+							<li>{{ $cocounsel->address }}<br>{{ $cocounsel->city }}, {{ $cocounsel->state }} {{ $cocounsel->zip }}</li>
+						</ul>
+					@endforeach
+					<p><a onclick="show('cocounselForm')">Add Co-Counsel</a></p>
+					<form id="cocounselForm" style="display: none;" method="POST" action="{{ $file->path() }}/relations">
+						<hr>
+					  	{{ csrf_field() }}
+						<div class="field">
+							<div class="control">
+								<div class="select">
+									<select id="status_id" name="status_id">
+									@foreach ($statusoptions as $option)
+										<option value="{{ $option->id }}">{{ $option->title }}</option>
+									@endforeach
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="field is-grouped">
+							<div class="control">
+								<button type="submit" class="button is-primary">Add Co-Counsel</button>
+							</div>
+						</div>
+					</form>
 					<h2>Statute of Limitations</h2>
 					<p></p>
 					<h2>Creation Details</h2>
@@ -115,4 +230,12 @@
     </div>
   </section>
   <div style="height:250px;"></div>
+@endsection
+
+@section('javascript')
+	<script type="text/javascript">
+	    function show(target){
+			document.getElementById(target).style.display = 'block';
+		}
+    </script>
 @endsection

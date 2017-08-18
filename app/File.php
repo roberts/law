@@ -80,7 +80,7 @@ class File extends Model
      */
     public function defendants()
     {
-        return $this->belongsToMany('App\Contact', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 1)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
+        return $this->belongsToMany('App\Contact', 'relations', 'file_id', 'related_id')->wherePivot('relationship_id', 1)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
     }
 
     /**
@@ -202,7 +202,7 @@ class File extends Model
      */
     public function cocounsels()
     {
-        return $this->belongsToMany('App\Organization', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 2)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
+        return $this->belongsToMany('App\Organization', 'relations', 'file_id', 'related_id')->wherePivot('relationship_id', 2)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
     }
 
     /**
@@ -210,7 +210,7 @@ class File extends Model
      */
     public function coworkers()
     {
-        return $this->belongsToMany('App\Person', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 3)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
+        return $this->belongsToMany('App\Person', 'relations', 'file_id', 'related_id')->wherePivot('relationship_id', 3)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
     }
 
     /**
@@ -218,7 +218,7 @@ class File extends Model
      */
     public function family()
     {
-        return $this->belongsToMany('App\Person', 'relations', 'file_id', 'related_id')->where('relations.relationship_id', 4)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
+        return $this->belongsToMany('App\Person', 'relations', 'file_id', 'related_id')->wherePivot('relationship_id', 4)->withPivot('relationship_id', 'client_id', 'created_by', 'updated_by', 'created_at', 'updated_at', 'deleted_at');
     }
  
 
