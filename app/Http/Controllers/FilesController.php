@@ -208,8 +208,9 @@ class FilesController extends Controller
     {
         $statusoptions = Status::orderBy('id', 'asc')->get();
         $firms = Contact::where('counsel', '=', 1)->orderBy('id')->get();
+        $contacts = Contact::whereNotIn('type_id', [3])->latest()->get();
 
-        return view('files.show', compact('file', 'statusoptions', 'firms'));
+        return view('files.show', compact('file', 'statusoptions', 'firms', 'contacts'));
     }
 
     /**

@@ -106,8 +106,8 @@
 									<div class="control">
 										<div class="select">
 											<select id="status_id" name="status_id">
-											@foreach ($statusoptions as $option)
-												<option value="{{ $option->id }}">{{ $option->title }}</option>
+											@foreach ($contacts as $contact)
+												<option value="{{ $contact->id }}">{{ $contact->display_name }}</option>
 											@endforeach
 											</select>
 										</div>
@@ -117,6 +117,7 @@
 									<div class="control">
 										<button type="submit" class="button is-primary">Add Client</button>
 									</div>
+									<p class="control"><a href="/contacts/organizations/create" class="button is-info">Create Client as Contact First</a></p>
 								</div>
 							</form>
 						</div>
@@ -141,8 +142,8 @@
 									<div class="control">
 										<div class="select">
 											<select id="status_id" name="status_id">
-											@foreach ($statusoptions as $option)
-												<option value="{{ $option->id }}">{{ $option->title }}</option>
+											@foreach ($contacts as $contact)
+												<option value="{{ $contact->id }}">{{ $contact->display_name }}</option>
 											@endforeach
 											</select>
 										</div>
@@ -152,6 +153,7 @@
 									<div class="control">
 										<button type="submit" class="button is-primary">Add Defendant</button>
 									</div>
+									<p class="control"><a href="/contacts/organizations/create" class="button is-info">Create Defendant as Contact First</a></p>
 								</div>
 							</form>
 						</div>
@@ -177,8 +179,8 @@
 									<div class="control">
 										<div class="select">
 											<select id="status_id" name="status_id">
-											@foreach ($statusoptions as $option)
-												<option value="{{ $option->id }}">{{ $option->title }}</option>
+											@foreach ($firms as $firm)
+												<option value="{{ $firm->id }}">{{ $firm->display_name }}</option>
 											@endforeach
 											</select>
 										</div>
@@ -188,6 +190,7 @@
 									<div class="control">
 										<button type="submit" class="button is-primary">Add Co-Counsel</button>
 									</div>
+									<p class="control"><a href="/contacts/organizations/create" class="button is-info">Create Co-Counsel as Contact First</a></p>
 								</div>
 							</form>
 						</div>
