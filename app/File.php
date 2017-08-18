@@ -60,6 +60,14 @@ class File extends Model
     }
 
     /**
+     * Get the file's client intake forms from the intake model corresponding to the file.
+     */
+    public function intakes()
+    {
+        return $this->hasMany($this->filetype->model);
+    }
+
+    /**
      * The clients that belong to the file.
      */
     public function clients()

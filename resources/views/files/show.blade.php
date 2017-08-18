@@ -201,37 +201,38 @@
 							</form>
 						</div>
 					</article>
+					@if (!$file->sol)
 					<h2 style="position:relative;">Statute of Limitations<a name="Matters" style="position:absolute; top:-225px;"></a></h2>
 					<hr>
-					@if ($file->sol)
-						<ul>
-							<li><b>{{ $file->sol->toFormattedDateString() }}</b></li>
-						</ul>
-					@else
-						<article class="message">
-							<div class="message-body">
-								<form method="POST" action="{{ $file->path() }}/update">
-								  	{{ csrf_field() }}
-									<div class="field">
-										<p class="control is-expanded has-icons-left">
-											<input class="input @if ($errors->has('sol')) is-danger @endif" id="sol" name="sol" value="{{ old('sol') }}" type="date" placeholder="SOL Date">
-											<span class="icon is-small is-left">
-												<i class="fa fa-calendar"></i>
-											</span>
-											@if ($errors->has('sol'))
-												<p class="help is-danger">{{ $errors->first('sol') }}</p>
-											@endif
-										</p>
+					<article class="message">
+						<div class="message-body">
+							<form method="POST" action="{{ $file->path() }}/update">
+							  	{{ csrf_field() }}
+								<div class="field">
+									<p class="control is-expanded has-icons-left">
+										<input class="input @if ($errors->has('sol')) is-danger @endif" id="sol" name="sol" value="{{ old('sol') }}" type="date" placeholder="SOL Date">
+										<span class="icon is-small is-left">
+											<i class="fa fa-calendar"></i>
+										</span>
+										@if ($errors->has('sol'))
+											<p class="help is-danger">{{ $errors->first('sol') }}</p>
+										@endif
+									</p>
+								</div>
+								<div class="field is-grouped">
+									<div class="control">
+										<button type="submit" class="button is-primary">Add SOL</button>
 									</div>
-									<div class="field is-grouped">
-										<div class="control">
-											<button type="submit" class="button is-primary">Add SOL</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</article>
+								</div>
+							</form>
+						</div>
+					</article>
 					@endif
+					@foreach ($file->intakes as $intake)
+					<h2 style="position:relative;">{{ $intake->client->display_name }} Intake Form<a name="Intakes" style="position:absolute; top:-150px;"></a></h2>
+					<hr>
+					@include('files.intakes.'.$file->filetype->slug)
+					@endforeach
 				</div>
 			</div>
 			<div class="column is-4-desktop is-5-tablet">
