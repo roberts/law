@@ -8,6 +8,7 @@ use App\Contact;
 use App\Source;
 use App\Note;
 use App\Status;
+use App\Relation;
 use App\IntakeMask;
 use App\IntakeDui;
 use App\IntakeWreck;
@@ -199,6 +200,45 @@ class FilesController extends Controller
     }
 
     /**
+     * Store a new relation for this file.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeRelation(FileType $filetype, File $file, Request $request)
+    {
+        $this->validate($request, [
+                'relationship_id' => 'required|min:1|integer',
+                'related_id' => 'required|min:1|integer',
+                'client_id' => 'required|min:1|integer'
+            ]);
+        $file->relations()->attach($request->related_id, [
+                'relationship_id' => $request->relationship_id,
+                'client_id' => $request->client_id,
+                'created_by' => auth()->id(),
+                'updated_by' => auth()->id()
+            ]);
+        return back();
+    }
+
+    /**
+     * Store a new status for this file.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeStatus(FileType $filetype, File $file, Request $request)
+    {
+        $this->validate($request, [
+                'status_id' => 'required|min:1|integer'
+            ]);
+        $file->statuses()->attach($request->status_id, [
+                'created_by' => auth()->id()
+            ]);
+        return back();
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\File  $file
@@ -206,7 +246,45 @@ class FilesController extends Controller
      */
     public function show(FileType $filetype, File $file)
     {
-        $statusoptions = Status::orderBy('id', 'asc')->get();
+        if ($file->current->status->id == 5) {
+            $statusoptions = Status::whereIn('id', [6, 24, 25])->orderBy('id', 'asc')->get();
+        } else if ($file->current->status->id == 6) {
+            $statusoptions = Status::whereIn('id', [7, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 7) {
+            $statusoptions = Status::whereIn('id', [8, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 8) {
+            $statusoptions = Status::whereIn('id', [9, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 9) {
+            $statusoptions = Status::whereIn('id', [10, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 10) {
+            $statusoptions = Status::whereIn('id', [11, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 11) {
+            $statusoptions = Status::whereIn('id', [12, 13, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 12) {
+            $statusoptions = Status::whereIn('id', [13, 23, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 13) {
+            $statusoptions = Status::whereIn('id', [12, 14, 20, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 14) {
+            $statusoptions = Status::whereIn('id', [15, 20, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 15) {
+            $statusoptions = Status::whereIn('id', [16, 20, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 16) {
+            $statusoptions = Status::whereIn('id', [17, 20, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 17) {
+            $statusoptions = Status::whereIn('id', [18, 20, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 18) {
+            $statusoptions = Status::whereIn('id', [20, 21, 22, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 19) {
+            $statusoptions = Status::whereIn('id', [20, 21, 22, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 20) {
+            $statusoptions = Status::whereIn('id', [14, 15, 16, 17, 18, 23, 24, 25])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 21) {
+            $statusoptions = Status::whereIn('id', [19])->orderBy('id', 'asc')->get();
+        } else if  ($file->current->status->id == 22) {
+            $statusoptions = Status::whereIn('id', [19])->orderBy('id', 'asc')->get();
+        } else {
+            $statusoptions = Status::whereIn('id', [])->get();
+        }
         $firms = Contact::where('counsel', '=', 1)->orderBy('id')->get();
         $contacts = Contact::whereNotIn('type_id', [3])->latest()->get();
 

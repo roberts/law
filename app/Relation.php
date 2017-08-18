@@ -2,9 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Relation extends Pivot
+class Relation extends Model
 {
 	/**
      * The table associated with the model.
@@ -30,7 +31,7 @@ class Relation extends Pivot
     protected $guarded = [];
 
     /**
-     * Get the creator of the file.
+     * Get the creator of the relation.
      */
     public function creator()
     {
@@ -38,10 +39,34 @@ class Relation extends Pivot
     }
 
     /**
-     * Get the user that last updated the file.
+     * Get the user that last updated the relation.
      */
     public function updater()
     {
         return $this->belongsTo('App\User', 'updated_by');
+    }
+
+    /**
+     * Get the file for this relation.
+     */
+    public function file()
+    {
+        return $this->belongsTo('App\File');
+    }
+
+    /**
+     * Get the entity for this relation.
+     */
+    public function entity()
+    {
+        return $this->belongsTo('App\Contact', 'related_id');
+    }
+
+    /**
+     * Get the client for this relation.
+     */
+    public function client()
+    {
+        return $this->belongsTo('App\Contact', 'client_id');
     }
 }
