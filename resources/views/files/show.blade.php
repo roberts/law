@@ -40,12 +40,12 @@
 				    counsel: {{ $file->counsel->display_name }}
 				  </a>
 				  @if ($file->sol)
-				  <a href="#SOL" class="panel-block">
+				  <a href="#Matters" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-calendar"></i></span>
 				    sol: {{ $file->sol->toFormattedDateString() }}
 				  </a>
 				  @endif
-				  <a href="#Creation" class="panel-block">
+				  <a href="#Matters" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-calendar"></i></span>
 				    created: {{ $file->created_at->toFormattedDateString() }} by {{ $file->creator->details->display_name }}
 				  </a>
@@ -205,7 +205,7 @@
 							</form>
 						</div>
 					</article>
-					<h2 style="position:relative;">Statute of Limitations<a name="SOL" style="position:absolute; top:-225px;"></a></h2>
+					<h2 style="position:relative;">Statute of Limitations<a name="Matters" style="position:absolute; top:-225px;"></a></h2>
 					<hr>
 					<p></p>
 				</div>
