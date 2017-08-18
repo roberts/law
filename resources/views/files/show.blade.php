@@ -11,11 +11,11 @@
 			<div class="column">
 				<nav class="panel">
 				  <p class="panel-heading">overview</p>
-				  <a class="panel-block">
+				  <a href="#Status" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-info-circle"></i></span>
 				    status: {{ $file->current->status->title }}
 				  </a>
-				  <a class="panel-block">
+				  <a href="#Clients" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-address-book-o"></i></span>
 				    @if (count($file->clients) > 1) 
 				    	clients: {{ $file->clients->first()->display_name }}, et al. 
@@ -23,7 +23,7 @@
 				    	client: {{ $file->clients->first()->display_name }}
 				    @endif
 				  </a>
-				  <a class="panel-block">
+				  <a href="#Defendants" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-bullseye"></i></span>
 				    @if (count($file->defendants) > 0)
 					    @if (count($file->defendants) > 1) 
@@ -35,23 +35,23 @@
 				    	no defendants yet
 				    @endif
 				  </a>
-				  <a class="panel-block">
+				  <a href="#Counsel" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-balance-scale"></i></span>
 				    counsel: {{ $file->counsel->display_name }}
 				  </a>
 				  @if ($file->sol)
-				  <a class="panel-block">
+				  <a href="#SOL" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-calendar"></i></span>
 				    sol: {{ $file->sol->toFormattedDateString() }}
 				  </a>
 				  @endif
-				  <a class="panel-block">
+				  <a href="#Creation" class="panel-block">
 				    <span class="panel-icon"><i class="fa fa-calendar"></i></span>
 				    created: {{ $file->created_at->toFormattedDateString() }} by {{ $file->creator->details->display_name }}
 				  </a>
 				</nav>
 				<div class="content">
-				  	<h2>Status History</h2>
+				  	<h2 style="position:relative;">Status History<a name="Status" style="position:absolute; top:-150px;"></a></h2>
 				  	<hr>
 				  	<ul>
 					@foreach ($file->statuses as $status)
@@ -83,10 +83,10 @@
 						</div>
 					</article>
 					@if (count($file->clients) > 1)
-					<h2>Clients</h2>
+					<h2 style="position:relative;">Clients<a name="Clients" style="position:absolute; top:-150px;"></a></h2>
 					<hr>
 					@else
-					<h2>Client</h2>
+					<h2 style="position:relative;">Client<a name="Clients" style="position:absolute; top:-150px;"></a></h2>
 					<hr>
 					@endif
 					@foreach ($file->clients as $client)
@@ -127,10 +127,10 @@
 					</article>
 					@endif
 					@if (count($file->defendants) > 1)
-					<h2>Defendants</h2>
+					<h2 style="position:relative;">Defendants<a name="Defendants" style="position:absolute; top:-150px;"></a></h2>
 					<hr>
 					@else
-					<h2>Defendant</h2>
+					<h2 style="position:relative;">Defendant<a name="Defendants" style="position:absolute; top:-150px;"></a></h2>
 					<hr>
 					@endif
 					@foreach ($file->defendants as $defendant)
@@ -166,8 +166,7 @@
 							</form>
 						</div>
 					</article>
-					
-					<h2>Counsel & Co-Counsels</h2>
+					<h2 style="position:relative;">Counsel @if (count($file->cocounsels) > 0) & Co-Counsels @endif<a name="Counsel" style="position:absolute; top:-150px;"></a></h2>
 					<hr>
 					<p><b>{{ $file->counsel->display_name }}</b> <a href="{{ $file->counsel->path() }}" class="has-text-info"><span class="icon is-small"><i class="fa fa-question-circle"></i></span></a></p>
 						<ul>
@@ -206,7 +205,7 @@
 							</form>
 						</div>
 					</article>
-					<h2>Statute of Limitations</h2>
+					<h2 style="position:relative;">Statute of Limitations<a name="SOL" style="position:absolute; top:-225px;"></a></h2>
 					<hr>
 					<p></p>
 				</div>
