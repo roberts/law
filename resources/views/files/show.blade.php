@@ -45,10 +45,6 @@
 				    sol: {{ $file->sol->toFormattedDateString() }}
 				  </a>
 				  @endif
-				  <a href="#Matters" class="panel-block">
-				    <span class="panel-icon"><i class="fa fa-calendar"></i></span>
-				    created: {{ $file->created_at->toFormattedDateString() }} by {{ $file->creator->details->display_name }}
-				  </a>
 				</nav>
 				<div class="content">
 				  	<h2 style="position:relative;">Status History<a name="Status" style="position:absolute; top:-150px;"></a></h2>
