@@ -232,6 +232,16 @@
 					<h2 style="position:relative;">{{ $intake->client->display_name }} Intake Form<a name="Intakes" style="position:absolute; top:-150px;"></a></h2>
 					<hr>
 					@include('files.intakes.'.$file->filetype->slug)
+					<h2 style="position:relative;">{{ $intake->client->display_name }} Family Members<a name="Intakes" style="position:absolute; top:-150px;"></a></h2>
+					<hr>
+					<h2 style="position:relative;">{{ $intake->client->display_name }} Co-Workers<a name="Intakes" style="position:absolute; top:-150px;"></a></h2>
+					<hr>
+					<h2 style="position:relative;">{{ $intake->client->display_name }} Employers<a name="Intakes" style="position:absolute; top:-150px;"></a></h2>
+					<hr>
+					@if ($file->filetype->id == 1)
+					<h2 style="position:relative;">{{ $intake->client->display_name }} Mines<a name="Intakes" style="position:absolute; top:-150px;"></a></h2>
+					<hr>
+					@endif
 					@endforeach
 				</div>
 			</div>
